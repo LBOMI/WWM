@@ -73,7 +73,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="#">My Page</a> </li>
+          <li><a class="nav-link scrollto" href="http://localhost:3000/users/mypage">My Page</a> </li>
           <li>
             <form action ="/users/logout" method="get">
               <input type = "submit" class="getstarted scrollto" value="Logout">
@@ -103,149 +103,10 @@
     </section><!-- End Breadcrumbs Section -->
 
 
-    <div class = "box">
-     <div class="box1">
-     <div class="wrapper">
-        <div class="img-area">
-          <div class="inner-area">
-            <img src="\images\제목_없는_아트워크_(5).jpg" alt="">
-          </div>
+    <div class = "modification">
+        <div class = "box">
+
         </div>
-        <div class="icon arrow"><i class="fas fa-arrow-left"></i></div>
-        <div class="icon dots"><i class="fas fa-ellipsis-v"></i></div>
-        <div class="name">USER</div>
-        <div class="about">walker</div>
-        <div class="social-icons">
-          <a href="#" class="fb"><i class="bi bi-twitter" style="color:rgb(171, 191, 163)"></i></a>
-          <a href="#" class="twitter"><i class="bi bi-facebook" style="color:rgb(171, 191, 163)"></i></a>
-          <a href="#" class="insta"><i class="bi bi-instagram" style="color:rgb(171, 191, 163)"></i></a>
-          <a href="#" class="yt"><i class="bi bi-linkedin" style="color:rgb(171, 191, 163)"></i></a>
-        </div>
-        <div class="buttons">
-          <button>Message</button>
-          <button><img src="\images\free-icon-heart-6852344.png" style="width: 30px; height: 30px;"></button>
-        </div>
-      </div>
-    
-
-    
-      <div class="card bg-light mb-3" style="max-width: 20rem;">
-        <div class="card-header">목차</div>
-        
-          
-            <ul class="card-body" style="list-style-image: url(\images\paw.png) ;">
-              <li><a href="http://localhost:3000/users/modification">회원 정보 수정</a></li>
-              <li>나의 활동</li>
-              <li>리워드</li>
-            </ul>
-        
-      </div>
-      </div>
-
-    <div class="box2">
-      <div class="contents">
-        <p><나의 산책 현황></p>
-        <div class="dou">
-        <div class="doughnut1">
-        <canvas id="doughnut-chart" width="300" height="170"></canvas>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-        <script>  
-        new Chart(document.getElementById("doughnut-chart"), {
-          type: 'doughnut',
-          data: {
-            datasets: [
-            {
-            label: "day",
-            backgroundColor: ["#3cba9f", "#C0C0C0"],
-            data: [8000,1696]
-            }
-            ]
-         },
-          options: {
-            cutoutPercentage: 55,
-            responsive: false,
-            title: {
-              display: true,
-            }
-          }
-        });
-        </script>
-        <p>day</p>
-        </div>
-
-        <div class="doughnut2">
-          <canvas id="doughnut2-chart" width="300" height="170"></canvas>
-    
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    
-          <script>  
-          new Chart(document.getElementById("doughnut2-chart"), {
-            type: 'doughnut',
-            data: {
-              datasets: [
-              {
-              label: "Month",
-              backgroundColor: ["#3cba9f", "#C0C0C0"],
-              data: [5000,4696]
-              }
-              ]
-            },
-            options: {
-              cutoutPercentage: 55,
-              responsive: false,
-              title: {
-                display: true,
-              }
-            }
-          });
-          </script>
-          <p>Month</p>
-        </div>
-
-        <div class="doughnut3">
-          <canvas id="doughnut3-chart" width="300" height="170"></canvas>
-    
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    
-          <script>  
-          new Chart(document.getElementById("doughnut3-chart"), {
-            type: 'doughnut',
-            data: {
-              datasets: [
-              {
-              label: "relative",
-              backgroundColor: ["#3cba9f", "#C0C0C0"],
-              data: [7000,2696]
-              }
-              ]
-            },
-            options: {
-              cutoutPercentage: 55,
-              responsive: false,
-              title: {
-                display: true,
-              }
-            }
-          });
-          </script>
-          <p>relative</p>
-        </div>
-      </div>
-      </div>
-
-      <div class = "box3">
-      <div class="state">
-        <p>이름:</br>
-          나이:</br>
-          거주 지역:</br>
-          건강 상태:</br>
-          리워드: 
-        </p>
-      </div>
-
-    </div>
     </div>
   </main><!-- End #main -->
 

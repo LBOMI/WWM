@@ -80,6 +80,11 @@ router.get("/mypage", loggedin, function(req, res) {
   res.render("user/마이페이지");
 });
 
+//회원정보 수정
+router.get("/modification", loggedin, function(req, res) {
+  res.render("user/회원정보수정");
+});
+
 //로그인했는지
 function loggedin(req, res, next) {
   //로그인 후 세션이 있다면 req.session.name이 항상 있음
