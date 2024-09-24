@@ -224,7 +224,7 @@ function create_id() {
   var email = document.querySelector('#email')
 
   if(id.value == "" || pw.value == "" || r_pw.value == "" || email.value == "") {
-      alert("수정을 완료할 수 없습니다.")
+      alert("회원가입을 할 수 없습니다.")
   }
   else {
       if(pw.value !== r_pw.value) {
