@@ -1,175 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>WWM</title>
-  <meta content="WWM의 마이페이지" name="description">
-  <meta content="산책" name="keywords">
-
-  <!-- Favicons -->
-  <link href="C:\Users\lcil2\Downloads\메인 아이콘.jpg" rel="icon">
-  <link href="C:\Users\lcil2\Downloads\메인 아이콘.jpg" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="\stylesheets\aos.css" rel="stylesheet">
-  <link href="\stylesheets\bootstrap.min.css" rel="stylesheet">
-  <link href="\stylesheets/bootstrap-icons.css" rel="stylesheet">
-  <link href="\stylesheets\boxicons.min.css" rel="stylesheet">
-  <link href="\stylesheets\glightbox.min.css" rel="stylesheet">
-  <link href="\stylesheets\swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="\stylesheets/inner.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Bocor
-  * Template URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
-  * Updated: Mar 17 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="\javascripts\jquery-3.7.1.min.js"></script>
+    
+    <script>
+    $(function () {
+        $("#password_eq").hide();
+        $("#password_neq").hide();
+        $("#r_pw").keyup(function () {
+           let firstPw = $("#up_pw").val();
+           let secondPw = $("#r_pw").val();
+           if (firstPw != "" || secondPw != "") {
+            if (firstPw == secondPw) {
+              $("#password_eq").show();
+              $("#password_neq").hide();
+              $(".access").removeAttr("disabled");
+            }
+            else {
+              $("#password_eq").hide();
+              $("#password_neq").show();
+              $(".access").attr("disabled", "disabled");
+            }
+           }
+       });
+      })
+    </script>
 </head>
-
 <body>
+  
+    <section id="about" class="about section-bg">
+        <div class="container">
+          <div class="login-wrap">
+            <div class="login-html">
+              <input id="tab-1" type="radio" name="tab" class="sign-in" ><label for="tab-1" class="tab"><a href="/users/login">Modification</a></label>
+              
+            <div class="login-form">
+              
+                  <form action="/users/sign_up" method="post">
+                  <div class="sign-up-htm">
+                    <div class="group">
+                      <label for="user" class="label">ID</label>
+                      <input id="up_id" type="text" class="input" name="userName">
+                    </div>
+                    <div class="group">
+                      <label for="pass" class="label">Password</label>
+                      <input id="up_pw" type="password" class="input" data-type="password" name="password">
+                    </div>
+                    <div class="group">
+                      <label for="pass" class="label">Repeat Password</label>
+                      <input id="r_pw" type="password" class="input" data-type="password">
+                      <p id="password_eq">비밀번호가 일치합니다!</p>
+                      <p id="password_neq">비밀번호가 일치하지 않습니다.</p>
+                    </div>
+                    <div class="group">
+                      <label for="pass" class="label">Email Address</label>
+                      <input id="email" type="text" class="input" name="userEmail">
+                    </div>
+                    <div class="group">
+                      <input type="submit" class="button" value="Complete" id="sign-up" style="color:black" onclick="create_id();">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                      <label for="tab-1">Already Member?</a>
+                    </div>
+                  </div>
+                </form>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <div class="logo">
-        <h1><a href="http://localhost:3000/success.html">WWM<span>.</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto " href="http://localhost:3000/success.html">Home</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="http://localhost:3000/users/mypage">My Page</a> </li>
-          <li>
-            <form action ="/users/logout" method="get">
-              <input type = "submit" class="getstarted scrollto" value="Logout">
-            </form></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <main id="main">
-
-    <!-- ======= Breadcrumbs Section ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>My Page</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>My Page</li>
-          </ol>
-        </div>
-
-      </div>
-    </section><!-- End Breadcrumbs Section -->
-
-
-    <div class = "modification">
-        <div class = "box">
-
-        </div>
-    </div>
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    <div class="footer-top">
-
-      <div class="container">
-
-        <div class="row  justify-content-center">
-          <div class="col-lg-6">
-            <h3>WWM</h3>
-            <p>Let's walk together!!</p>
-          </div>
-        </div>
-
-        <div class="row footer-newsletter justify-content-center">
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-
-        <div class="social-links">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container footer-bottom clearfix">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Bocor</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="\javascripts\aos.js"></script>
-  <script src="\javascripts\bootstrap.bundle.min.js"></script>
-  <script src="\javascripts\glightbox.min.js"></script>
-  <script src="\javascripts\isotope.pkgd.min.js"></script>
-  <script src="\javascripts\swiper-bundle.min.js"></script>
-  <script src="\javascripts\validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="\javascripts/main.js"></script>
+              </div>
+            </div>
+      </section>
 
 </body>
-
+<script src="/javascripts/ain.js"></script>
 </html>
