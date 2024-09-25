@@ -1,5 +1,24 @@
 const models = require("./models/index.js");
 const session = require('express-session');
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+  host: '127.0.0.1',
+  user: 'root',
+  password: '1234',
+  database: 'login',
+  port: '3306',
+});
+
+connection.connect();
+
+connection.query('SELECT * from users', (error, rows, fields) => {
+  if (error) throw error;
+  console.log('User info is: ', rows);
+});
+
+connection.end();
+
 
 
 

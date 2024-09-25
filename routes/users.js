@@ -5,6 +5,8 @@ const crypto = require('crypto');
 
 
 
+
+
 router.get('/sign_up', function(req, res, next) {
   res.render("user/회원가입");
 });
@@ -81,9 +83,26 @@ router.get("/mypage", loggedin, function(req, res) {
 });
 
 //회원정보 수정
-router.get("/modification", loggedin, function(req, res) {
+router.get("/modification", function(req, res) {
   res.render("user/회원정보수정");
 });
+
+router.put('/modification',  (req, res) => {
+  connection.query("UPDATE * FROM users", (error, result, fields) => {
+    if (error) throw error;
+    console.log(results);
+})
+});
+
+function modi(req, res, next) {
+  connection.query("UPDATE * FROM users", (error, result, fields) => {
+    if (error) throw error;
+    console.log(results);
+  });
+}
+
+
+
 
 //로그인했는지
 function loggedin(req, res, next) {
