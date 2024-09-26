@@ -83,23 +83,12 @@ router.get("/mypage", loggedin, function(req, res) {
 });
 
 //회원정보 수정
-router.get("/modification", function(req, res) {
-  res.render("user/회원정보수정");
-});
-
 router.put('/modification',  (req, res) => {
   connection.query("UPDATE * FROM users", (error, result, fields) => {
     if (error) throw error;
     console.log(results);
 })
 });
-
-function modi(req, res, next) {
-  connection.query("UPDATE * FROM users", (error, result, fields) => {
-    if (error) throw error;
-    console.log(results);
-  });
-}
 
 
 

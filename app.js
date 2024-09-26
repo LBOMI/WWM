@@ -1,5 +1,6 @@
 const models = require("./models/index.js");
 const session = require('express-session');
+
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -10,16 +11,28 @@ const connection = mysql.createConnection({
   port: '3306',
 });
 
-connection.connect();
-
-connection.query('SELECT * from users', (error, rows, fields) => {
-  if (error) throw error;
-  console.log('User info is: ', rows);
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('socket open')
 });
 
-connection.end();
+connection.query("SELECT * FROM users", (err, result)=> {
+  if (err) throw err;
+  console.log(result)
+})
 
+connection.end() //커넥션 끊기
 
+/*회원 정보 수정
+connection.connect(function(err) {
+  if (err) throw err;
+  var sql = "UPDATE users SET userName = 'body.userName', password = 'body.password', userEmail='body.userEmail' ";
+  connection.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log(result.affectedRows + " record(s) updated");
+  });
+}); 
+*/
 
 
 models.sequelize.sync().then(()=> {
