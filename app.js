@@ -1,6 +1,9 @@
 const models = require("./models/index.js");
 const session = require('express-session');
 
+
+
+
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
@@ -11,7 +14,7 @@ const connection = mysql.createConnection({
   port: '3306',
 });
 
-connection.connect((err) => {
+connection.connect((err) => { //소켓 open
   if (err) throw err;
   console.log('socket open')
 });
@@ -20,6 +23,9 @@ connection.query("SELECT * FROM users", (err, result)=> {
   if (err) throw err;
   console.log(result)
 })
+
+
+
 
 connection.end() //커넥션 끊기
 
@@ -51,6 +57,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+
 
 var app = express();
 

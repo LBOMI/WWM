@@ -2,11 +2,21 @@ const express = require('express');
 const router = express.Router();
 const models = require("../models");
 const crypto = require('crypto');
+const mysql = require("mysql"); 
 
 
 
 
+let client = mysql.createConnection({
+  user: "root",
+  password: "1234",
+  database: "login"
+})
 
+
+
+
+//회원가입
 router.get('/sign_up', function(req, res, next) {
   res.render("user/회원가입");
 });
@@ -83,13 +93,9 @@ router.get("/mypage", loggedin, function(req, res) {
 });
 
 //회원정보 수정
-router.put('/modification',  (req, res) => {
-  connection.query("UPDATE * FROM users", (error, result, fields) => {
-    if (error) throw error;
-    console.log(results);
-})
+router.get('/modi', function(req, res, next) {
+  res.render("user/회원정보수정");
 });
-
 
 
 
@@ -111,7 +117,21 @@ router.get("/logout", function(req,res,next) {
 
   res.redirect("http://localhost:3000/index.html")
 })
+
+
+router.post('/modi',async(req,res,next)=>{
+  try{
+  await  models.user.update({name:req.body.userName},{
+      where:{name :req.session.name},
+  });
+  res.redirect('/users/modi');
+  }catch(error){
+      console.error(error);
+      next(error);
+  }
+});
 module.exports = router;
+
 
 
 

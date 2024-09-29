@@ -21,3 +21,7 @@ module.exports = (sequelize, DataTypes) => {
 
   return user;
 };
+
+const mysql = require("mysql");
+
+
