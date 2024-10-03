@@ -1,6 +1,6 @@
 const models = require("./models/index.js");
 const session = require('express-session');
-
+const multer = require('multer');
 
 
 
@@ -103,6 +103,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//이미지 업로드
 
 
 
