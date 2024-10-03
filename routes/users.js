@@ -5,17 +5,6 @@ const crypto = require('crypto');
 const mysql = require("mysql"); 
 
 
-
-
-let client = mysql.createConnection({
-  user: "root",
-  password: "1234",
-  database: "login"
-})
-
-
-
-
 //회원가입
 router.get('/sign_up', function(req, res, next) {
   res.render("user/회원가입");
@@ -24,22 +13,30 @@ router.get('/sign_up', function(req, res, next) {
 
 router.post("/sign_up", async function(req,res,next){
   let body = req.body;
-
+console.log("이승현", body);
   let inputPassword = body.password;
   let salt = Math.round((new Date().valueOf() * Math.random())) + "";
   let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
-  let result = models.user.create({
-      name: body.userName,
-      email: body.userEmail,
-      password: hashPassword,
-      salt: salt
-  })
+  let result = models.user.create(
+     {
+       name: body.userName,
+       email: body.userEmail,
+       password: hashPassword,
+       salt: salt
+   }
+)
 
   res.redirect("/users/sign_up");
 })
 
+
 // 메인페이지
+router.get('/main', function(req, res, next) {
+  res.render("user/메인");
+});
+
+
 router.get('/', function(req, res) {
   res.sendFile(__dirname + "/public/index.html")
 })
@@ -89,13 +86,11 @@ router.post("/login", async function(req,res,next){
 
 //마이페이지
 router.get("/mypage", loggedin, function(req, res) {
-  res.render("user/마이페이지");
+  res.render('user/마이페이지', {});
 });
 
 //회원정보 수정
-router.get('/modi', function(req, res, next) {
-  res.render("user/회원정보수정");
-});
+
 
 
 
@@ -119,17 +114,49 @@ router.get("/logout", function(req,res,next) {
 })
 
 
-router.post('/modi',async(req,res,next)=>{
-  try{
-  await  models.user.update({name:req.body.userName},{
-      where:{name :req.session.name},
-  });
-  res.redirect('/users/modi');
-  }catch(error){
-      console.error(error);
-      next(error);
-  }
+//회원정보수정
+
+router.get("/modi", loggedin, function(req, res) {
+  res.render('user/회원정보수정', {});
 });
+
+router.post("/modi", async function(req,res,next){
+
+  let body = req.body;
+  console.log("이승현", body);
+    let inputPassword = body.password;
+    let salt = Math.round((new Date().valueOf() * Math.random())) + "";
+    let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
+  
+    let result = models.user.update(
+       {
+         name: body.name,
+         email: body.email,
+         password: hashPassword,
+         salt: salt
+     }, {
+          where: {
+            name : body.name
+          },
+        },
+  )
+
+  // let body = req.body;
+
+  // console.log("이승현", body);
+  // let result = models.user.update(
+  //   //   {
+  //   //     name: body.userName,
+  //   //     email: body.userEmail,
+  //   //     password: hashPassword,
+  //   //     salt: salt
+  //   // }
+  //   body
+  // )
+  res.redirect("/users/modi");
+});
+
+
 module.exports = router;
 
 

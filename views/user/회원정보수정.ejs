@@ -1,18 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="\javascripts\jquery-3.7.1.min.js"></script>
+    
+    <script>
+    $(function () {
+        $("#password_eq").hide();
+        $("#password_neq").hide();
+        $("#r_pw").keyup(function () {
+           let firstPw = $("#up_pw").val();
+           let secondPw = $("#r_pw").val();
+           if (firstPw != "" || secondPw != "") {
+            if (firstPw == secondPw) {
+              $("#password_eq").show();
+              $("#password_neq").hide();
+              $(".access").removeAttr("disabled");
+            }
+            else {
+              $("#password_eq").hide();
+              $("#password_neq").show();
+              $(".access").attr("disabled", "disabled");
+            }
+           }
+       });
+      })
+    </script>
 </head>
 <body>
-  <div class="change-info">
-    <h2>이름 바꾸기</h2>
-    <form id="change-info-nic" action="/users/modi" method="post">
-      <input name="nickname"/>
-      <button id="change-button" type="submit">변경</button>
-    </form>
-  </div>
-</div>
+  
+    <section id="about" class="about section-bg">
+        <div class="container">
+          <div class="login-wrap">
+            <div class="login-html">
+              
+              <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Modification</label>
+            <div class="login-form">
+              
+                  <form action="/users/modi" method="post">
+                  <div class="sign-up-htm">
+                    <div class="group">
+                      <label for="user" class="label">ID</label>
+                      <input id="up_id" type="text" class="input" name="name">
+                    </div>
+                    <div class="group">
+                      <label for="pass" class="label">Password</label>
+                      <input id="up_pw" type="password" class="input" data-type="password" name="password">
+                    </div>
+                    <div class="group">
+                      <label for="pass" class="label">Repeat Password</label>
+                      <input id="r_pw" type="password" class="input" data-type="password">
+                      <p id="password_eq">비밀번호가 일치합니다!</p>
+                      <p id="password_neq">비밀번호가 일치하지 않습니다.</p>
+                    </div>
+                    <div class="group">
+                      <label for="pass" class="label">Email Address</label>
+                      <input id="email" type="text" class="input" name="email">
+                    </div>
+                    <div class="group">
+                      <input type="submit" class="button" value="Sign Up" id="sign-up" style="color:black" onclick="updateUser();">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                      <label for="tab-1">Already Member?</a>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+      </section>
+
 </body>
+<script src="/javascripts/ain.js"></script>
 </html>
