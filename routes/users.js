@@ -161,6 +161,11 @@ router.post("/modi", async function(req,res,next){
   res.redirect("/users/modi");
 });
 
+//탈퇴-비밀번호 확인
+router.get("/passwordch", function(req,res,next) {
+
+  res.render("user/passwordch");
+})
 
 module.exports = router;
 

@@ -48,6 +48,19 @@
     display:inline-block;
     border-bottom:2px solid transparent;
   }
+
+  /* passwordcheck css */
+  .about .login-html .ta8{
+    width: 200px;
+    font-size:22px;
+    padding-bottom:5px;
+    margin:auto;
+    display:inline-block;
+    border-bottom:2px solid transparent;
+    color:#4fdc6b;
+    border-color:#00000000;
+  }
+
   .about .login-html .sign-in:checked + .tab,
   .about .login-html .sign-up:checked + .tab{
     color:#4fdc6b;
