@@ -36,15 +36,21 @@ router.get('/main', function(req, res, next) {
   res.render("user/메인");
 });
 
+//로그인 후 메인페이지
+router.get("/success", loggedin, function(req, res) {
+  res.render('user/success', {});
+});
+// router.get('/', function(req, res) {
+//   res.sendFile(__dirname + "/public/success.html")
+// })
+
 
 router.get('/', function(req, res) {
   res.sendFile(__dirname + "/public/index.html")
 })
 
-// 로그인 후 메인페이지
-router.get('/', function(req, res) {
-  res.sendFile(__dirname + "/public/success.html")
-})
+
+
 
 
 // 로그인 GET
@@ -89,7 +95,6 @@ router.get("/mypage", loggedin, function(req, res) {
   res.render('user/마이페이지', {});
 });
 
-//회원정보 수정
 
 
 
@@ -110,7 +115,7 @@ router.get("/logout", function(req,res,next) {
   req.session.destroy();
   res.clearCookie('sid');
 
-  res.redirect("http://localhost:3000/index.html")
+  res.redirect("http://localhost:3000")
 })
 
 
