@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Route</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmhEiuwQ1N3yFtSVQgb6MF7gGpY4drzuM"></script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>경로 및 고도 정보</h1>
+    <form id="routeForm">
+        <label for="origin">출발지:</label>
+        <input type="text" id="origin" name="origin" required>
+        <br>
+        <label for="destination">도착지:</label>
+        <input type="text" id="destination" name="destination" required>
+        <br>
+        <button type="submit">경로 보기</button>
+    </form>
+    
+    <div id="map"></div>
+    <p id="elevationInfo"></p>
+
+    <script>
+        let map, userMarker;
+        let directionsService;
+        let directionsRenderer;
+
+        // 사용자의 현재 위치로 지도 중심 설정
+        function initMap() {
+            // GPS로 사용자의 현재 위치 가져오기
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    // 지도를 사용자 위치로 초기화
+                    map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 12,
+                        center: userLocation
+                    });
+
+                    // 사용자의 현재 위치에 마커 추가
+                    userMarker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        title: '현재 위치'
+                    });
+
+                    directionsService = new google.maps.DirectionsService();
+                    directionsRenderer = new google.maps.DirectionsRenderer();
+                    directionsRenderer.setMap(map);
+                }, () => {
+                    handleLocationError(true, map.getCenter());
+                });
+            } else {
+                // 브라우저에서 GPS를 지원하지 않는 경우
+                handleLocationError(false, map.getCenter());
+            }
+        }
+
+        // 경로 요청 및 지도에 경로와 마커 표시
+        document.getElementById('routeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+
+            fetch('/get_route', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    origin: origin,
+                    destination: destination,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const routePath = data.route.map(loc => ({ lat: loc[0], lng: loc[1] }));
+
+                const maxElevation = data.max_elevation;
+                const avgElevation = data.avg_elevation;
+
+                // 고도 정보 표시
+                document.getElementById('elevationInfo').textContent = 
+                    `최대 고도: ${maxElevation.toFixed(2)}m, 평균 고도: ${avgElevation.toFixed(2)}m`;
+
+                // 지도에 경로 표시
+                const routePolyline = new google.maps.Polyline({
+                    path: routePath,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2,
+                });
+                routePolyline.setMap(map);
+
+                // 경로 렌더링
+                directionsService.route(
+                    {
+                        origin: origin,
+                        destination: destination,
+                        travelMode: 'DRIVING',
+                    },
+                    (result, status) => {
+                        if (status === 'OK') {
+                            directionsRenderer.setDirections(result);
+
+                            // 출발지와 도착지에 마커 추가
+                            const originLatLng = result.routes[0].legs[0].start_location;
+                            const destinationLatLng = result.routes[0].legs[0].end_location;
+
+                            new google.maps.Marker({
+                                position: originLatLng,
+                                map: map,
+                                title: '출발지'
+                            });
+
+                            new google.maps.Marker({
+                                position: destinationLatLng,
+                                map: map,
+                                title: '도착지'
+                            });
+                        }
+                    }
+                );
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        // GPS 오류 처리
+        function handleLocationError(browserHasGeolocation, pos) {
+            alert(browserHasGeolocation ?
+                "GPS 위치를 가져올 수 없습니다." :
+                "브라우저에서 GPS를 지원하지 않습니다.");
+        }
+
+        // 초기 지도 로드
+        window.onload = initMap;
+    </script>
+</body>
+</html>
