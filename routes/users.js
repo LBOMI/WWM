@@ -163,9 +163,25 @@ router.post("/modi", async function(req,res,next){
 
 //탈퇴-비밀번호 확인
 router.get("/passwordch", function(req,res,next) {
-
   res.render("user/passwordch");
 })
+
+router.post("/passwordch", async function(req,res,next){
+  let body = req.body;
+
+  let result = await models.user.findOne({
+    where: {
+      password : body.password
+  } 
+  });
+  if (result === null) {
+    console.log('Not found!')
+  } else {
+     // true
+    console.log("성공"); // 'My Title'
+  }
+  res.redirect("/users/passwordch");
+});
 
 module.exports = router;
 

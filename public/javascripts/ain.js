@@ -50,3 +50,15 @@ function login() {
         }
     }
   }
+
+  function check() {
+    var pw = document.querySelector('#up_pw');
+  
+    if(pw.value == "") {
+        alert("비밀번호를 입력해주세요.")
+        location.href = 'http://localhost:3000/users/passwordch'
+    }
+    else {
+        location.href = 'http://localhost:3000/users/passwordch'
+    }
+  }
