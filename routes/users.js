@@ -162,7 +162,7 @@ router.post("/modi", async function(req,res,next){
 });
 
 //탈퇴-비밀번호 확인
-router.get("/passwordch", function(req,res,next) {
+router.get("/passwordch",  function(req,res,next) {
   res.render("user/passwordch");
 })
 
@@ -176,12 +176,20 @@ router.post("/passwordch", async function(req,res,next){
   });
   if (result === null) {
     console.log('Not found!')
+    res.redirect("/users/passwordch");
   } else {
      // true
-    console.log("성공"); // 'My Title'
+    console.log("성공") // 'My Title'
+    res.render("user/탈퇴");
   }
-  res.redirect("/users/passwordch");
+  
 });
+
+// 탈퇴 확인 메세지
+router.get("/exit",  function(req,res,next) {
+  res.render("user/탈퇴");
+})
+
 
 module.exports = router;
 
