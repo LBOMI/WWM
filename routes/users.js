@@ -20,8 +20,8 @@ console.log("이승현", body);
 
   let result = models.user.create(
      {
-       name: body.userName,
-       email: body.userEmail,
+       name: body.name,
+       email: body.email,
        password: hashPassword,
        salt: salt
    }
@@ -169,9 +169,9 @@ router.get("/passwordch",  function(req,res,next) {
 router.post("/passwordch", async function(req,res,next){
   let body = req.body;
 
-  let result = await models.user.findOne({
+  let result = await models.user.findOne ({
     where: {
-      password : body.password
+      email : body.email
   } 
   });
   if (result === null) {
@@ -182,7 +182,6 @@ router.post("/passwordch", async function(req,res,next){
     console.log("성공") // 'My Title'
     res.render("user/탈퇴");
   }
-  
 });
 
 // 탈퇴 확인 메세지
@@ -190,6 +189,16 @@ router.get("/exit",  function(req,res,next) {
   res.render("user/탈퇴");
 })
 
+router.post("/exit", async function(req,res,next){
+  let body = req.body;
+
+  let result = await models.user.destroy({
+    where: {
+      email : body.email
+  }
+  });
+  res.redirect("http://localhost:3000")
+});
 
 module.exports = router;
 
