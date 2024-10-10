@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+  <link rel="manifest" href="/manifest.json">
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>WWM</title>
+  <meta content="WWM의 마이페이지" name="description">
+  <meta content="WWM, 마이페이지" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/메인 아이콘.jpg" rel="icon">
+  <link href="assets/img/메인 아이콘.jpg">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  </head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="index.html">WWM<span>.</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About Us</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="inner-page.html">My Page</a></li>
+          <li><a class="getstarted scrollto" href="http://localhost:3000/users/login">로그인</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row d-flex align-items-center">
+      <div class=" col-lg-6 py-5 py-lg-0 order-2 order-lg-1" data-aos="fade-right">
+        <h1>Walk With Me </h1>
+        <h2>가벼운 산책으로 재밌게 운동을 하고 싶은 사람들에게 삶에서 소소한 행복을 찾을 수 있는 워크윗미</h2>
+        <a href="http://localhost:3000/users/login" class="btn-get-started scrollto">로그인</a>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 산책2.jpg" data-aos="fade-left">
+        <img src="assets/img/산책2.jpg" class="img-fluid" alt="" style="border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .features {
+        padding: 80px 0;
+      }
+      .content {
+        margin-top: 40px;
+      }
+      .content ul {
+        list-style: none;
+        padding: 0;
+      }
+      .content ul li {
+        margin-bottom: 10px;
+      }
+      .content ul li label {
+        font-weight: bold;
+      }
+      .content ul li input[type="text"],
+      .content ul li input[type="password"],
+      .content ul li select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 4px;
+      }
+      .content ul li input[type="text"]:focus,
+      .content ul li input[type="password"]:focus,
+      .content ul li select:focus {
+        outline: none;
+        border-color: #85b7d9;
+      }
+      .content ul li button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+      .content ul li button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="features" class="features section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-aos="fade-in">사용자 정보 입력</h2>
+          <p data-aos="fade-in">해당 사용자 정보를 입력하면, 이에 따른 적절한 산책로를 추천해줍니다. <br> 안내에 따라 사용자의 기본 정보, 개인 정보, 건강 정보 등을 입력해 제출해주세요.</br> </p>
+        </div>
+  
+        <div class="row content">
+          <div class="col-md-5" data-aos="fade-right">
+            <img src="assets/img/features-1.svg" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7 pt-4" data-aos="fade-left">
+            <h3>사용자의 기본 정보</h3>
+            <ul>
+              <li><label for="name">이름 : </label><input id="name" type="text"></li>
+              <li><label for="id">아이디 : </label><input id="id" type="text"></li>
+              <li><label for="pw">비밀번호 : </label><input id="pw" type="password"></li>
+              <li><label for="nick">닉네임 : </label><input id="nick" type="text"></li>
+              <li><button onclick="submitUserInfo()">정보 제출하기</button></li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="row content">
+          <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+            <img src="assets/img/features-2.svg" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+            <h3>개인정보</h3>
+            <ul>
+              <li><i class="bi bi-check"></i>나이
+                <select name="age" id="age">
+                  <option value="19세이하">19세 이하</option>
+                  <option value="20대~30대">20대~30대</option>
+                  <option value="40대~50대">40대~50대</option>
+                  <option value="60대이상">60대 이상</option>
+                </select>
+              </li>
+              <li><i class="bi bi-check"></i> 거주 지역
+                <select name="city" id="city">
+                  <optgroup label="서울">
+                    <option value="songpa-gu">송파구</option>
+                    <option value="gangnam-gu">강남구</option>
+                    <option value="seocho-gu">서초구</option>
+                    <option value="junggu-gu">중구</option>
+                  </optgroup>
+                  <optgroup label="경기도">
+                    <option value="seongnam-si">성남시</option>
+                    <option value="suwon-si">수원시</option>
+                    <option value="yongin-si">용인시</option>
+                    <option value="anyang-si">안양시</option>
+                  </optgroup>
+                </select>
+              </li>
+              <li><i class="bi bi-check"></i>건강 상태 확인(주로 이상이 있는 부위)
+                <input type="text" name="healthCondition" id="healthCondition" list="browser">
+                <datalist id="browser">
+                  <option value="무릎">하체</option>
+                  <option value="천식">호흡기</option>
+                  <option value="당뇨">당뇨</option>
+                  <option value="허리통증">상체</option>
+                </datalist>
+              </li>
+              <li><i class="bi bi-check"></i>평균 운동시간
+                <input type="text" name="exerciseTime" id="exerciseTime" list="browser2">
+                <datalist id="browser2">
+                  <option value="30분미만">30분 미만</option>
+                  <option value="30분이상~1시간미만">30분 이상 ~ 1시간 미만</option>
+                  <option value="1시간이상~2시간미만">1시간 이상 ~ 2시간 미만</option>
+                  <option value="2시간이상">2시간 이상</option>
+                </datalist>
+              </li>
+              <li><button onclick="calculateScore()">점수 계산하기</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <script>
+      function submitUserInfo() {
+        // 사용자 기본 정보 제출 처리
+        var name = document.getElementById('name').value;
+        var id = document.getElementById('id').value;
+        var pw = document.getElementById('pw').value;
+        var nick = document.getElementById('nick').value;
+        // 여기서 데이터 처리나 서버로 전송 등의 추가 작업 수행 가능
+        console.log(name, id, pw, nick);
+      }
+  
+      function calculateScore() {
+        var age = document.getElementById('age').value;
+        var city = document.getElementById('city').value;
+        var healthCondition = document.getElementById('healthCondition').value;
+        var exerciseTime = document.getElementById('exerciseTime').value;
+    
+        var score = 0;
+    
+        // 나이에 따른 점수 계산
+        if (age === '19세이하') {
+          score += 1;
+        } else if (age === '20대~30대') {
+          score += 2;
+        } else if (age === '40대~50대') {
+          score += 3;
+        } else if (age === '60대이상') {
+          score += 4;
+        }
+    
+        // 건강 상태에 따른 점수 계산
+        if (healthCondition === '무릎') {
+          score += 4;
+        } else if (healthCondition === '천식') {
+          score += 3;
+        } else if (healthCondition === '당뇨') {
+          score += 2;
+        } else if (healthCondition === '허리통증') {
+          score += 1;
+        }
+    
+        // 운동 시간에 따른 점수 계산
+        if (exerciseTime === '30분미만') {
+          score += 4;
+        } else if (exerciseTime === '30분이상~1시간미만') {
+          score += 3;
+        } else if (exerciseTime === '1시간이상~2시간미만') {
+          score += 2;
+        } else if (exerciseTime === '2시간이상') {
+          score += 1;
+        }
+    
+
+
+
+// 점수를 작은 창으로 표시
+var resultWindow = window.open('', '_blank', 'width=400,height=300');
+        resultWindow.document.write('<html><head><title>계산된 점수</title></head><body>');
+        resultWindow.document.write('<h1 style="text-align:center;">계산된 점수</h1>');
+        
+
+
+
+
+        // 점수에 따라 메시지 선택
+        var message = '';
+        if (score >= 1 && score <= 4) {
+          message = 'NORMAL (정상)';
+          resultWindow.document.write('<h2 style="text-align:center; font-size: 3em; color: green;">' + score + '</h2>');
+        } else if (score >= 5 && score <= 8) {
+          message = 'ELEVATED (상승)';
+          resultWindow.document.write('<h2 style="text-align:center; font-size: 3em; color: orange;">' + score + '</h2>');
+        } else if (score >= 9 && score <= 12) {
+          message = 'DANGEROUS (위험)';
+          resultWindow.document.write('<h2 style="text-align:center; font-size: 3em; color: red;">' + score + '</h2>');
+        }
+        
+        resultWindow.document.write('<p style="text-align:center; font-size: 2em;">본인의 건강 점수에 맞는 산책로를 추천해드리겠습니다.</p>');
+        resultWindow.document.write('');
+        resultWindow.document.close();
+      }
+
+      
+    </script>
+    
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        }, (err) => {
+          console.log('Service Worker registration failed:', err);
+        });
+    });
+  }
+  </script>
+    
+    <!-- <li><i class="bi bi-check"></i>여기부터 지도 코드.</li> -->
+
+          <!DOCTYPE html>
+          <html lang="ko">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>산책로 추천 및 경로 공유</title>
+              <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+              <style>
+                  body {
+                      font-family: 'Arial', sans-serif;
+                      background-color: #f8f9fa;
+                  }
+                  #map {
+                      height: 500px;
+                      width: 100%;
+                      margin-top: 20px;
+                      border-radius: 8px;
+                      border: 1px solid #ced4da;
+                  }
+                  #controls, #tags {
+                      margin-top: 20px;
+                      padding: 20px;
+                      background-color: #ffffff;
+                      border-radius: 8px;
+                      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                  }
+                  h1 {
+                      margin-top: 20px;
+                      text-align: center;
+                      color: #343a40;
+                  }
+                  .form-label {
+                      margin-bottom: 5px;
+                      font-weight: bold;
+                      color: #495057;
+                  }
+                  .form-control {
+                      margin-bottom: 10px;
+                  }
+                  .btn-primary {
+                      background-color: #007bff;
+                      border-color: #007bff;
+                      width: 100%;
+                  }
+                  .btn-secondary {
+                      background-color: #6c757d;
+                      border-color: #6c757d;
+                      width: 100%;
+                      margin-top: 10px;
+                  }
+              </style>
+          </head>
+          <body>
+          
+
+
+              <div class="container">
+    <h1>산책로 추천 및 경로 공유</h1>
+    <p data-aos="fade-in">사용자의 위치 기반으로 추천된 산책로를 확인하세요.</p>
+
+    <div id="controls" class="row">
+        <div class="col-md-6">
+            <label for="start" class="form-label">출발지:</label>
+            <input type="text" id="start" class="form-control" placeholder="출발지를 입력하세요">
+        </div>
+        <div class="col-md-6">
+            <label for="end" class="form-label">도착지:</label>
+            <input type="text" id="end" class="form-control" placeholder="도착지를 입력하세요">
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-primary" onclick="calculateAndDisplayRoute()">길 찾기</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-secondary" onclick="findNearbyPaths()">근처 산책로 찾기</button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-secondary" onclick="findNearbyRestaurants()">근처 맛집 찾기</button>
+        </div>
+    </div>
+
+    <div id="tags" class="row">
+        <div class="col-md-12">
+            <label for="path-tags" class="form-label">경로 태그:</label>
+            <input type="text" id="path-tags" class="form-control" placeholder="#벚꽃길 #야경길 #하이킹">
+            <button class="btn btn-primary mt-2" onclick="createAndSharePath()">나만의 산책로 공유하기</button>
+        </div>
+    </div>
+
+    <div id="reward-container" class="mt-4">
+        <p>현재 포인트: <span id="reward-points">0</span> 포인트</p>
+    </div>
+
+    <div id="map"></div>
+</div>
+
+<!-- Google Maps JavaScript API 로드 -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmhEiuwQ1N3yFtSVQgb6MF7gGpY4drzuM&libraries=places&callback=initMap" async defer></script>
+<script>
+    var map;
+    var directionsService;
+    var directionsRenderer;
+    var geocoder;
+    var placesService;
+    var currentPositionMarker;
+    var rewardPoints = 0;
+
+    // 지도 초기화 및 Directions Service 설정
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: { lat: 37.5665, lng: 126.9780 } // 서울의 위도와 경도
+        });
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer();
+        geocoder = new google.maps.Geocoder();
+        placesService = new google.maps.places.PlacesService(map);
+        directionsRenderer.setMap(map);
+
+        // 현재 위치 표시
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                currentPositionMarker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: "현재 위치"
+                });
+
+                map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, map.getCenter());
+            });
+        } else {
+            // 브라우저가 Geolocation을 지원하지 않는 경우
+            handleLocationError(false, map.getCenter());
+        }
+
+        // 오랜 시간 접속 리워드 포인트 부여
+        setTimeout(function() {
+            rewardPoints += 10; // 예시: 10포인트 추가
+            updateRewardPoints();
+            alert("오랜 시간 접속해 있어서 10포인트가 추가되었습니다!");
+        }, 3600000); // 1시간 후 (1시간=3600000ms)
+    }
+
+    // 위치 오류 처리 함수
+    function handleLocationError(browserHasGeolocation, pos) {
+        var infoWindow = new google.maps.InfoWindow({
+            map: map
+        });
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+    }
+
+    // 출발지와 도착지로 경로 계산 및 표시
+    function calculateAndDisplayRoute() {
+        var startInput = document.getElementById('start').value.trim();
+        var endInput = document.getElementById('end').value.trim();
+
+        if (!startInput || !endInput) {
+            alert("출발지와 도착지를 모두 입력해주세요.");
+            return;
+        }
+
+        geocodeAddress(startInput, function(startLocation) {
+            geocodeAddress(endInput, function(endLocation) {
+                var request = {
+                    origin: startLocation,
+                    destination: endLocation,
+                    travelMode: 'WALKING'
+                };
+
+                directionsService.route(request, function(response, status) {
+                    if (status === 'OK') {
+                        directionsRenderer.setDirections(response);
+                        rewardPoints += 20; // 도착지 도달 시 20포인트 추가
+                        updateRewardPoints();
+                        alert("도착지에 도착하여 20포인트가 추가되었습니다!");
+                        findNearbyRestaurants(); // 경로 완주 후 맛집 추천
+                    } else {
+                        window.alert('경로 요청에 실패했습니다. 오류 코드: ' + status);
+                    }
+                });
+            });
+        });
+    }
+
+    // 주소를 지오코딩하여 좌표로 변환하는 함수
+    function geocodeAddress(address, callback) {
+        geocoder.geocode({ 'address': address }, function(results, status) {
+            if (status === 'OK') {
+                callback(results[0].geometry.location);
+            } else {
+                window.alert('주소를 찾을 수 없습니다: ' + address + '. 오류 코드: ' + status);
+            }
+        });
+    }
+
+// 근처 산책로 찾기
+function findNearbyPaths() {
+    var currentLocation = map.getCenter();
+    var request = {
+        location: currentLocation,
+        radius: '2000', // 2km 반경 내
+        keyword: '산책로'
+    };
+
+    placesService.nearbySearch(request, function(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker(results[i], 'green'); // 초록색 마커
+            }
+        } else {
+            window.alert('근처 산책로를 찾을 수 없습니다. 오류 코드: ' + status);
+        }
+    });
+}
+
+// 근처 맛집 찾기
+function findNearbyRestaurants() {
+    var currentLocation = map.getCenter();
+    var request = {
+        location: currentLocation,
+        radius: '2000', // 2km 반경 내
+        type: ['restaurant'] // 맛집 유형
+    };
+
+    placesService.nearbySearch(request, function(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker(results[i], 'yellow'); // 노란색 마커
+            }
+        } else {
+            window.alert('근처 맛집을 찾을 수 없습니다. 오류 코드: ' + status);
+        }
+    });
+}
+
+// 장소에 마커 추가
+function createMarker(place, color) {
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location,
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: color,
+            fillOpacity: 1,
+            strokeWeight: 2,
+            strokeColor: 'black'
+        }
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+        var contentString = '<div style="text-align: center;">' +
+            '<strong>' + place.name + '</strong><br>' +
+            (place.vicinity ? '주소: ' + place.vicinity + '<br>' : '') +
+            (place.rating ? '평점: ' + place.rating + '<br>' : '') +
+            (place.user_ratings_total ? '리뷰 수: ' + place.user_ratings_total + '<br>' : '') +
+            (place.website ? '<a href="' + place.website + '" target="_blank">웹사이트</a><br>' : '') +
+            (place.opening_hours ? (place.opening_hours.open_now ? '현재 영업 중' : '현재 영업 종료') : '영업 시간 정보 없음') +
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        infowindow.open(map, marker);
+    });
+}
+
+
+
+
+
+
+
+    // 나만의 산책로 공유하기
+    
+    function createAndSharePath() {
+    // 공유할 산책로 정보
+    const pathInfo = {
+        name: "나만의 산책로",
+    };
+
+    // 공유 링크 생성
+    const message = `${pathInfo.name}\n${pathInfo.description}\n위치: ${pathInfo.location}\n점수: ${pathInfo.score}`;
+
+    // 카카오톡 공유 URL
+    const kakaoShareUrl = `https://story.kakao.com/share?url=${encodeURIComponent(message)}`;
+
+    // 네이버 메일 공유 URL
+    const naverMailUrl = `https://mail.naver.com/?body=${encodeURIComponent(message)}`;
+
+    // 네이버 블로그 공유 URL
+    const naverBlogUrl = `https://blog.naver.com/openapi/share?url=${encodeURIComponent(message)}`;
+
+    // 공유 옵션
+    const shareOptions = `
+        <h1>공유할 방법을 선택하세요:</h1>
+        <button onclick="window.open('${kakaoShareUrl}', '_blank')">카카오톡으로 공유하기</button>
+        <button onclick="window.open('${naverMailUrl}', '_blank')">네이버 메일로 공유하기</button>
+        <button onclick="window.open('${naverBlogUrl}', '_blank')">네이버 블로그로 공유하기</button>
+        <button onclick="window.close()">닫기</button>
+    `;
+  }
+
+
+
+
+
+
+
+
+
+
+    function createAndSharePath() {
+        var startInput = document.getElementById('start').value.trim();
+        var endInput = document.getElementById('end').value.trim();
+        var tags = document.getElementById('path-tags').value.trim();
+
+        if (!startInput || !endInput) {
+            alert("출발지와 도착지를 모두 입력해주세요.");
+            return;
+        }
+
+        geocodeAddress(startInput, function(startLocation) {
+            geocodeAddress(endInput, function(endLocation) {
+                var request = {
+                    origin: startLocation,
+                    destination: endLocation,
+                    travelMode: 'WALKING'
+                };
+
+                directionsService.route(request, function(response, status) {
+                    if (status === 'OK') {
+                        directionsRenderer.setDirections(response);
+                        rewardPoints += 15; // 경로 공유 시 15포인트 추가
+                        updateRewardPoints();
+                        alert("경로를 공유하여 15포인트가 추가되었습니다!");
+                        findNearbyRestaurants(); // 경로 공유 후 맛집 추천
+                        savePathToDatabase(startInput, endInput, tags);
+                    } else {
+                        window.alert('경로 요청에 실패했습니다. 오류 코드: ' + status);
+                    }
+                });
+            });
+        });
+    }
+
+    // 리워드 포인트 업데이트 함수
+    function updateRewardPoints() {
+        document.getElementById('reward-points').innerText = rewardPoints;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    function savePathToDatabase(start, end, tags) {
+    fetch('http://localhost:3000/savePath', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ start, end, tags }),
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('경로가 성공적으로 저장되었습니다.');
+        } else {
+            console.error('경로 저장 중 오류 발생');
+        }
+    })
+    .catch(error => {
+        console.error('네트워크 오류:', error);
+    });
+}
+
+function createAndSharePath() {
+    var startInput = document.getElementById('start').value.trim();
+    var endInput = document.getElementById('end').value.trim();
+    var tags = document.getElementById('path-tags').value.trim();
+
+    if (!startInput) {
+        alert("출발지를 입력해주세요.");
+        return;
+    }
+    if (!endInput) {
+        alert("도착지를 입력해주세요.");
+        return;
+    }
+
+    geocodeAddress(startInput, function(startLocation) {
+        geocodeAddress(endInput, function(endLocation) {
+            var request = {
+                origin: startLocation,
+                destination: endLocation,
+                travelMode: 'WALKING'
+            };
+
+            directionsService.route(request, function(response, status) {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(response);
+                    // 서버에 경로 데이터를 저장
+                    savePathToDatabase(startInput, endInput, tags);
+                } else {
+                    window.alert('경로 요청에 실패했습니다. 오류 코드: ' + status);
+                }
+            });
+        });
+    });
+}
+    
+</script>
+
+          
+
+
+
+
+            <p>. </p>
+            <ul>
+             <!-- <li><i class="bi bi-check"></i> 추가할 내용 더 넣기.</li> -->
+              
+            </ul>
+          </div>
+        </div>
+
+        <section id="features" class="features">
+          <div class="container">
+              <div class="row content">
+                  <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+                      <img src="assets/img/features-4.svg" class="img-fluid" alt="추천 산책로 이미지">
+                  </div>
+                  <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+                      <h3>해당 사용자의 추천 산책로의 결과</h3>
+                      <p class="fst-italic">이 산책로는 사용자의 위치와 성향을 기반으로 추천되었습니다.</p>
+                      <p>산책로를 따라 걷다 보면 자연경관과 함께 여유로운 시간을 보낼 수 있습니다.</p>
+                      <p>이용해주셔서 감사합니다.</p>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+<br>
+        <div class="section-title">
+          <h2 data-aos="fade-in">SHOP</h2>
+          <p data-aos="fade-in">랜덤 미션으로 획득한 리워드 포인트를 통해 원하는 상품을 구매할 수 있는 구매 페이지이다.<br>여러가지 브랜드의 기프티콘 뿐만 아니라 건강, 식품까지 다양한 카테고리로 준비가 되어있다. </br>
+
+
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">기프티콘</li>
+              <li data-filter=".filter-card">식품</li>
+              <li data-filter=".filter-web">건강</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\스타벅스_로고.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\스타벅스_로고.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Starbucks"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>Starbucks</h4>
+                <p>기프티콘</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\종근당_로고.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\종근당_로고.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="종근당"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>종근당</h4>
+                <p>건강</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\이디야_로고.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\이디야_로고.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="EDIYA COFFEE"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>EDIYA COFFEE</h4>
+                <p>기프티콘</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\원월드_로고.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\원월드_로고.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="원월드"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>원월드</h4>
+                <p>식품(과일 전문점)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\정관장_로고.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\정관장_로고.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="정관장"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>정관장</h4>
+                <p>건강</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\CU_로고.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\CU_로고.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="CU"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>CU</h4>
+                <p>기프티콘
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\한돈_로고.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\한돈_로고.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="한돈"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>한돈</h4>
+                <p>식품 (고기 전문점)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\오설록_로고.png" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\오설록_로고.png" data-gallery="portfolioGallery" class="portfolio-lightbox" title="오설록"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>오설록</h4>
+                <p>식품 (차 전문점)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="assets\img\portfolio\센트룸상품_로고.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="assets\img\portfolio\센트룸상품_로고.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="센트룸"><i class="bi bi-plus"></i></a>
+                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              </div>
+              <div class="portfolio-info">
+                <h4>센트룸</h4>
+                <p>건강</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+    <!-- ======= Clients Section ======= -->
+   <!-- End Clients Section -->
+
+    <!-- ======= About Section ======= -->
+    <!-- End About Section -->
+
+
+    <!-- ======= Features Section ======= -->
+    <!-- End Features Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Team Section ======= -->
+    <!-- ======= Team Section ======= -->
+<section id="team" class="team section-bg">
+  <div class="container">
+
+    <div class="section-title">
+      <h2 data-aos="fade-in">Team</h2>
+      <p data-aos="fade-in"> <a>덕성여자대학교 사이버보안 전공 졸업프로젝트 WWM팀<br> </a> Walk With Me 를 함께 만들어간 팀원들 정보</p>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="member" data-aos="fade-up">
+          <div class="pic"><img src="assets\img\team\김소현_프로필__.png" alt=""></div>
+          <h4>김소현</h4>
+          <span>사이버보안 전공</span>
+          <span>20211243</span>
+          <span>프론트엔드</span>
+          <div class="social">
+            <a href=""><i class="bi bi-twitter"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="member" data-aos="fade-up" data-aos-delay="100">
+          <div class="pic"><img src="assets\img\team\박송희_프로필.png" alt=""></div>
+          <h4>박송희</h4>
+          <span>사이버보안 전공</span>
+          <span>20200745</span>
+          <span>백엔드</span>
+          <div class="social">
+            <a href=""><i class="bi bi-twitter"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="member" data-aos="fade-up" data-aos-delay="200">
+          <div class="pic"><img src="assets\img\team\이보미_프로필.jpg" alt=""></div>
+          <h4>이보미</h4>
+          <span>수학 전공</span>
+          <span>20201223</span>
+          <span>프론트엔드</span>
+          <div class="social">
+            <a href=""><i class="bi bi-twitter"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="member" data-aos="fade-up" data-aos-delay="300">
+          <div class="pic"><img src="assets\img\team\박수민_프로필_.png" alt=""></div>
+          <h4>박수민</h4>
+          <span>경영학 전공 </span>
+          <span>20201105</span>
+          <span>백엔드</span>
+          <div class="social">
+            <a href=""><i class="bi bi-twitter"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <!-- End Pricing Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2 data-aos="fade-in">FAQ</h2>
+          <p data-aos="fade-in">산책 헬스케어 워크윗미를 이용하면서 궁금했던 점과 자주 묻는 질문에 대한 대답을 나열한 것이다.</p>
+        </div>
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up">
+          <div class="col-lg-5">
+            <i class="bx bx-help-circle"></i>
+            <h4>워크윗미란 무엇인가요?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              최근 스마트폰과 컴퓨터 사용시간 증가, 신체 활동 시간 감소로 척추측만증, 거북목 증후군 등의 비정상적인 체형변화가 늘어나고 있어 바른 자세와 바르게 걷기의 중요성이 주목받고 있습니다. 즐겁고 일상적인 운동 문화운동을 통한 스트레스 해소로 국민 건강 증진에 힘을 쓰고 싶어 제작된 작품이다.
+
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-5">
+            <i class="bx bx-help-circle"></i>
+            <h4>사람들 혹은 기타 대상에게 주는 이점은 무엇인가요?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              건강 문제로 고민이 많은 현대인들, 격한 운동보다는 가벼운 산책으로 재밌게 운동을 하고 싶은 사람들에게 삶에서 소소한 행복을 찾을 수 있다.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-5">
+            <i class="bx bx-help-circle"></i>
+            <h4>위크윗미 만의 특징은?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              워크윗미 만의 특징으로는 개인맞춤 서비스가 있다. 예를 들면, 로그인을 통해 개인 운동 진행 상황이나 맞춤 산책 코스 추천 등 사용자에게 맞는 산책 서비스를 제공한다. 그 이외에도 특정 위치 지점에 도착하면 포인트를 증정하는 게임을 통해 지루하지 않는 산책 어플 서비스를 개발할 예정이다.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-5">
+            <i class="bx bx-help-circle"></i>
+            <h4>랜덤 미션으로 획득한 리워드는 어떻게 사용할 수 있나요?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              해당 Shop 페이지에서 리워드 포인트에 맞게 원하는 기프티콘, 상품 등을 구매할 수 있다.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+        <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+          <div class="col-lg-5">
+            <i class="bx bx-help-circle"></i>
+            <h4>커뮤니티 이용방법은 어떻게 되나요?</h4>
+          </div>
+          <div class="col-lg-7">
+            <p>
+              커뮤니티 페이지에서 사진이나 글을 올리는 활동을 통해 주기적으로 올린 이용자에게 리워드가 제공될 뿐만 아니라 다른 사람들에게 공개적으로 본인만의 산책 경로를 추천하고 실시간으로 소통, 공유할 수 있다.
+            </p>
+          </div>
+        </div><!-- End F.A.Q Item-->
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>연락처</h2>
+          <p>DUKSUNG WOMEN'S UNIVERSITY CYBER SECURITY</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box" data-aos="fade-up">
+                  <i class="bx bx-map"></i>
+                  <h3>Our Address</h3>
+                  <p>[01369] 서울특별시 도봉구 삼양로 144길 33 덕성여자대학교 차미리사관 229호</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>sohyeon53qq@gmail.com<br>psh10922@duksung.ac.kr<br>lcil2293@naver.com <br>shsm1083@naver.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4" data-aos="fade-up" data-aos-delay="100">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Call Us</h3>
+                  <p>02-901-8677</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form w-100" data-aos="fade-up">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+
+      <div class="container">
+
+        <div class="row  justify-content-center">
+          <div class="col-lg-6">
+            <h3>WWM</h3>
+            <p>Walk With Me!!</p>
+          </div>
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>WWM</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+ 
+  
+</body>
+
+</html>
