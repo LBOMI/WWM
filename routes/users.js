@@ -84,7 +84,7 @@ router.post("/login", async function(req,res,next){
       //세션 설정
       req.session.name = body.userName;
   }
-  else{
+  else if(dbPassword = ""){
       console.log("비밀번호 불일치");
   }
   res.redirect("/users/login");
@@ -169,7 +169,7 @@ router.get("/passwordch",  function(req,res,next) {
 router.post("/passwordch", async function(req,res,next){
   let body = req.body;
 
-  let result = await models.user.findOne ({
+  let result = await models.user.destroy ({
     where: {
       email : body.email
   } 
@@ -179,8 +179,10 @@ router.post("/passwordch", async function(req,res,next){
     res.redirect("/users/passwordch");
   } else {
      // true
+     req.session.destroy();
     console.log("성공") // 'My Title'
-    res.render("user/탈퇴");
+    res.send("<script>alert('탈퇴되었습니다.');location.href='/';</script>");
+
   }
 });
 
