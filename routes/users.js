@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const models = require("../models");
 const crypto = require('crypto');
-const mysql = require("mysql"); 
-
+const mysql = require("mysql");
 
 //회원가입
 router.get('/sign_up', function(req, res, next) {
@@ -27,7 +26,7 @@ console.log("이승현", body);
    }
 )
 
-  res.redirect("/users/sign_up");
+  res.redirect("/users/login");
 })
 
 
@@ -65,40 +64,49 @@ router.get('/login', function(req, res, next) {
 
 
 // 로그인 POST
-router.post("/login", itnayo, async function(req,res,next){
+router.post("/login", async function(req,res,next){
   let body = req.body;
 
+  
   let result = await models.user.findOne({
     where: {
       name : body.userName
   }
-  });
-
-  let dbPassword = result.dataValues.password;
-  let inputPassword = body.password;
-  let salt = result.dataValues.salt;
-  let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
-
-  if(dbPassword === hashPassword){
-      console.log("비밀번호 일치");
-      //세션 설정
-      req.session.name = body.userName;
-  }
-  else if(dbPassword === ""){
-      console.log("비밀번호 불일치");
+  })
+  if (result) {
+    let dbPassword = result.dataValues.password;
+    let inputPassword = body.password;
+    let salt = result.dataValues.salt;
+    let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
+  
+    if(dbPassword === hashPassword){
+        console.log("비밀번호 일치");
+        //세션 설정
+        req.session.name = body.userName;
+      } else {
+        console.log("비밀번호 불일치");
+      }
+      res.redirect("/users/login");
   } else {
-  res.redirect("/users/login");
+    console.log("ㄴㄴ");
+    res.send("<script>alert('회원정보가 없습니다.');location.href='/users/login';</script>");
   }
-});
+  } 
+
+  );
+
+
 
 //회원정보가 있는지
-function itnayo (req, res, next) {
-  if (req.body.name) {
-    next(); //통과
-  } else {
-    res.send("회원정보가 없습니다.");
-  }
-}
+// function itnayo (req, res, next) {
+
+//   if (req.body.name) {
+//     next(); //통과
+//   }
+//   else {
+//     res.send("<script>alert('회원정보가 없습니다.');location.href='/users/login';</script>");
+//   }
+// }
 
 //마이페이지
 router.get("/mypage", loggedin, function(req, res) {
