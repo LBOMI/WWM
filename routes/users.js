@@ -65,7 +65,7 @@ router.get('/login', function(req, res, next) {
 
 
 // 로그인 POST
-router.post("/login", async function(req,res,next){
+router.post("/login", itnayo, async function(req,res,next){
   let body = req.body;
 
   let result = await models.user.findOne({
@@ -84,11 +84,21 @@ router.post("/login", async function(req,res,next){
       //세션 설정
       req.session.name = body.userName;
   }
-  else if(dbPassword = ""){
+  else if(dbPassword === ""){
       console.log("비밀번호 불일치");
-  }
+  } else {
   res.redirect("/users/login");
+  }
 });
+
+//회원정보가 있는지
+function itnayo (req, res, next) {
+  if (req.body.name) {
+    next(); //통과
+  } else {
+    res.send("회원정보가 없습니다.");
+  }
+}
 
 //마이페이지
 router.get("/mypage", loggedin, function(req, res) {
