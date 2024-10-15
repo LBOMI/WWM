@@ -1,4 +1,6 @@
-
+const express = require('express');
+const router = express.Router();
+const models = require("../models");
 
 function login() {
     var id = document.querySelector('#id');
@@ -6,6 +8,7 @@ function login() {
   
     if(id.value == "" || pw.value == "") {
         alert("로그인을 할 수 없습니다.")
+        res.render("user/로그인");
     }
     else {
         location.href = 'index.html'
@@ -53,11 +56,12 @@ function login() {
 
   function check() {
     var email = document.querySelector('#email');
+    // let body = req.body;
     if(email.value == "") {
-        alert("비밀번호를 입력해주세요.")
+        alert("이메일을 입력해주세요.")
         // location.href = 'http://localhost:3000/users/passwordch'
     }
-    else {
+    else  {
         location.href = 'http://localhost:3000/users/passwordch'
     }
   }

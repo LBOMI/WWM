@@ -192,15 +192,15 @@ router.post("/passwordch", async function(req,res,next){
       email : body.email
   } 
   });
-  if (result === null) {
-    console.log('Not found!')
-    res.redirect("/users/passwordch");
-  } else {
-     // true
-     req.session.destroy();
+  if (result) {
+    req.session.destroy();
     console.log("성공") // 'My Title'
     res.send("<script>alert('탈퇴되었습니다.');location.href='/';</script>");
 
+  } else {
+    console.log('Not found!')
+    res.send("<script>alert('이메일을 확인해주세요.');location.href='/users/passwordch';</script>");
+    // res.redirect("/users/passwordch");
   }
 });
 
