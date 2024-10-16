@@ -122,6 +122,7 @@
         margin-top: 40px;
       }
       .content ul {
+        margin-top: 20px;
         list-style: none;
         padding: 0;
       }
@@ -168,7 +169,7 @@
           <p data-aos="fade-in">해당 사용자 정보를 입력하면, 이에 따른 적절한 산책로를 추천해줍니다. <br> 안내에 따라 사용자의 기본 정보, 개인 정보, 건강 정보 등을 입력해 제출해주세요.</br> </p>
         </div>
   
-        <div class="row content">
+        <!-- <div class="row content">
           <div class="col-md-5" data-aos="fade-right">
             <img src="/images/features-1.svg" class="img-fluid" alt="">
           </div>
@@ -182,15 +183,16 @@
               <li><button onclick="submitUserInfo()">정보 제출하기</button></li>
             </ul>
           </div>
-        </div>
+        </div> -->
   
         <div class="row content">
           <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
             <img src="/images/features-2.svg" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
-            <h3>개인정보</h3>
+            <h3>사용자의 기본 정보</h3>
             <ul>
+              <li><i class="bi bi-check"></i><label for="nick">이름(닉네임) : </label><input id="nick" type="text"></li>
               <li><i class="bi bi-check"></i>나이
                 <select name="age" id="age">
                   <option value="19세이하">19세 이하</option>
@@ -243,15 +245,16 @@
     <script>
       function submitUserInfo() {
         // 사용자 기본 정보 제출 처리
-        var name = document.getElementById('name').value;
-        var id = document.getElementById('id').value;
-        var pw = document.getElementById('pw').value;
-        var nick = document.getElementById('nick').value;
+        // var name = document.getElementById('name').value;
+        // var id = document.getElementById('id').value;
+        // var pw = document.getElementById('pw').value;
+        // var nick = document.getElementById('nick').value;
         // 여기서 데이터 처리나 서버로 전송 등의 추가 작업 수행 가능
-        console.log(name, id, pw, nick);
+        // console.log(name, id, pw, nick);
       }
   
       function calculateScore() {
+        var nick = document.getElementById('nick').value;
         var age = document.getElementById('age').value;
         var city = document.getElementById('city').value;
         var healthCondition = document.getElementById('healthCondition').value;
@@ -325,7 +328,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>산책로 추천 및 경로 공유</title>
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"> -->
         <style>
             body {
                 font-family: 'Arial', sans-serif;
