@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const models = require("../models");
+
 const crypto = require('crypto');
 const mysql = require("mysql");
 
@@ -204,21 +205,67 @@ router.post("/passwordch", async function(req,res,next){
   }
 });
 
-// 탈퇴 확인 메세지
-router.get("/exit",  function(req,res,next) {
-  res.render("user/탈퇴");
-})
-
-router.post("/exit", async function(req,res,next){
+// 사용자 정보
+router.post("/success", async function(req,res,next){
   let body = req.body;
 
-  let result = await models.user.destroy({
-    where: {
-      email : body.email
+  let result = models.preferences.create(
+    {
+      name: body.uname, 
+      age: body.age,
+      city: body.city,
+      healthcondition: body.healthCondition,
+      exerciseTime: body.exerciseTime,
   }
-  });
-  res.redirect("http://localhost:3000")
+)
+  // const result = await models.preferences.create(
+  //   {
+  //     name: body.uname, 
+  //     age: body.age,
+  //     city: body.city,
+  //     healthcondition: body.healthCondition,
+  //     exerciseTime: body.exerciseTime,
+  //     // score: body.score
+  //   },
+  //   { fields: ['name', 'age','city', 'healthcondition', 'exerciseTime'] },
+  // );
+
+  // let result = models.preferences.create({
+  //    name: uname, 
+  //    age: age,
+  //    city: city,
+  //    healthcondition:healthCondition,
+  //    exerciseTime: exerciseTime,
+  //    score: score
+  // });
+
+  // if (result) {
+    
+  //   console.log("5252") // 'My Title'
+    
+
+  // } else {
+  //   console.log('Not found!')
+    
+    res.redirect("/users/success");
+  // }
 });
+
+// 탈퇴 확인 메세지
+// router.get("/exit",  function(req,res,next) {
+//   res.render("user/탈퇴");
+// })
+
+// router.post("/exit", async function(req,res,next){
+//   let body = req.body;
+
+//   let result = await models.user.destroy({
+//     where: {
+//       email : body.email
+//   }
+//   });
+//   res.redirect("http://localhost:3000")
+// });
 
 module.exports = router;
 
