@@ -129,9 +129,11 @@
       .content ul li {
         margin-bottom: 10px;
       }
+      /* 정보 입력 폰트 두께 */
+      /* 
       .content ul li label {
         font-weight: bold;
-      }
+      } */
       .content ul li input[type="text"],
       .content ul li input[type="password"],
       .content ul li select {
@@ -190,9 +192,10 @@
             <img src="/images/features-2.svg" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+            <form action="/users/success" method="post">
             <h3>사용자의 기본 정보</h3>
             <ul>
-              <li><i class="bi bi-check"></i><label for="nick">이름(닉네임) : </label><input id="nick" type="text"></li>
+              <li><i class="bi bi-check"></i><label for="nick" >이름(닉네임) : </label><input id="nick" type="text" name="uname"></li>
               <li><i class="bi bi-check"></i>나이
                 <select name="age" id="age">
                   <option value="19세이하">19세 이하</option>
@@ -235,8 +238,9 @@
                   <option value="2시간이상">2시간 이상</option>
                 </datalist>
               </li>
-              <li><button onclick="calculateScore()">점수 계산하기</button></li>
+              <li><button name="score" onclick="calculateScore()">점수 계산하기</button></li>
             </ul>
+          </form>
           </div>
         </div>
       </div>
