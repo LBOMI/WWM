@@ -110,8 +110,15 @@ router.post("/login", async function(req,res,next){
 // }
 
 //마이페이지
-router.get("/mypage", loggedin, function(req, res) {
-  res.render('user/마이페이지', {});
+router.get("/mypage", loggedin, async function(req, res) {
+  let body = req.body;
+
+  let result = await models.preferences.findOne({
+    // attributes: ['name', 'age'],
+  });
+  console.log(result);
+ 
+  res.render('user/마이페이지', { body, result});
 });
 
 
@@ -218,26 +225,6 @@ router.post("/success", async function(req,res,next){
       exerciseTime: body.exerciseTime,
   }
 )
-  // const result = await models.preferences.create(
-  //   {
-  //     name: body.uname, 
-  //     age: body.age,
-  //     city: body.city,
-  //     healthcondition: body.healthCondition,
-  //     exerciseTime: body.exerciseTime,
-  //     // score: body.score
-  //   },
-  //   { fields: ['name', 'age','city', 'healthcondition', 'exerciseTime'] },
-  // );
-
-  // let result = models.preferences.create({
-  //    name: uname, 
-  //    age: age,
-  //    city: city,
-  //    healthcondition:healthCondition,
-  //    exerciseTime: exerciseTime,
-  //    score: score
-  // });
 
   // if (result) {
     
@@ -251,21 +238,6 @@ router.post("/success", async function(req,res,next){
   // }
 });
 
-// 탈퇴 확인 메세지
-// router.get("/exit",  function(req,res,next) {
-//   res.render("user/탈퇴");
-// })
-
-// router.post("/exit", async function(req,res,next){
-//   let body = req.body;
-
-//   let result = await models.user.destroy({
-//     where: {
-//       email : body.email
-//   }
-//   });
-//   res.redirect("http://localhost:3000")
-// });
 
 module.exports = router;
 
