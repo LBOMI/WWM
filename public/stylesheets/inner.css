@@ -792,7 +792,7 @@ body {
   /* 내용 */
   .contents {
     width: 900px;
-    height: 250px;
+    height: 270px;
     border-radius: 10px;
     margin: 30px 0px 0px 0px;
     box-shadow: -3px -3px 7px #ffffff,
@@ -808,7 +808,7 @@ body {
     border-radius: 5em;
     padding: 0.5em;
     font-weight: bold;
-    margin: 0px;
+    margin: 0;
   }
   
   .box2 .contents .doughnut1 p,
@@ -824,6 +824,10 @@ body {
     margin-top: 0;
   }
   
+  .box3 {
+    margin-top: 20px;
+    height: 400px;
+  }
   
   .state {
     width: 900px;
