@@ -331,8 +331,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>산책로 추천 및 경로 공유</title>
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
-        <!-- <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
             body {
                 font-family: 'Arial', sans-serif;
@@ -377,6 +376,11 @@
                 margin-top: 10px;
             }
         </style>
+        <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=cVhL84LFFs9gcbpfi3KiH1uTXSIzKo196YqIK3eN"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmhEiuwQ1N3yFtSVQgb6MF7gGpY4drzuM&libraries=places&callback=initGoogleMap" async defer></script>
+
+    
     </head>
     <body>
     
@@ -394,7 +398,7 @@
                     <input type="text" id="end" class="form-control" placeholder="도착지를 입력하세요">
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-primary" onclick="calculateAndDisplayRoute()">길 찾기</button>
+                    <button class="btn btn-primary" onclick="searchRoute()">길 찾기</button>
                 </div>
                 <div class="col-md-6">
                     <button class="btn btn-secondary" onclick="findNearbyPaths()">근처 산책로 찾기</button>
@@ -413,106 +417,179 @@
         </div>
     
         <!-- Google Maps JavaScript API 로드 -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmhEiuwQ1N3yFtSVQgb6MF7gGpY4drzuM&libraries=places&callback=initMap" async defer></script>
-        <script>
+         <script>
             var map;
             var directionsService;
             var directionsRenderer;
             var geocoder;
             var placesService;
             var currentPositionMarker;
+            var markerLayer, geolocationMarker;
+            var marker_s, marker_e;
+            var resultdrawArr = [];
     
-            // 지도 초기화 및 Directions Service 설정
+                 // 지도 초기화
             function initMap() {
-                map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12,
-                    center: { lat: 37.5665, lng: 126.9780 } // 서울의 위도와 경도
+                map = new Tmapv2.Map("map", {
+                    center: new Tmapv2.LatLng(37.5665, 126.9780),
+                    width: "100%",
+                    height: "500px",
+                    zoom: 12
                 });
-                directionsService = new google.maps.DirectionsService();
-                directionsRenderer = new google.maps.DirectionsRenderer();
-                geocoder = new google.maps.Geocoder();
-                placesService = new google.maps.places.PlacesService(map);
-                directionsRenderer.setMap(map);
-    
-                // 현재 위치 표시
+        
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position) {
-                        var pos = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-    
-                        currentPositionMarker = new google.maps.Marker({
-                            position: pos,
-                            map: map,
-                            title: "현재 위치"
-                        });
-    
-                        map.setCenter(pos);
-                    }, function() {
-                        handleLocationError(true, map.getCenter());
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        map.setCenter(new Tmapv2.LatLng(lat, lng));
+                    }, function () {
+                        alert("위치 정보를 가져올 수 없습니다.");
                     });
-                } else {
-                    // 브라우저가 Geolocation을 지원하지 않는 경우
-                    handleLocationError(false, map.getCenter());
                 }
             }
+        
+            window.onload = initMap;
+        
+            // 경로 탐색 및 지도에 표시
+            function searchRoute() {
+              var startAddress = $("#start").val();
+              var endAddress = $("#end").val();
     
-            // 위치 오류 처리 함수
-            function handleLocationError(browserHasGeolocation, pos) {
-                var infoWindow = new google.maps.InfoWindow({
-                    map: map
-                });
-                infoWindow.setPosition(pos);
-                infoWindow.setContent(browserHasGeolocation ?
-                                      'Error: The Geolocation service failed.' :
-                                      'Error: Your browser doesn\'t support geolocation.');
-            }
+              geocodeAddress(startAddress, function(startCoords) {
+                  geocodeAddress(endAddress, function(endCoords) {
+                      findRoute(startCoords.lng, startCoords.lat, endCoords.lng, endCoords.lat);
+                      centerMapOnRoute(startCoords, endCoords); // 추가된 부분: 경로 중심으로 지도 이동
+                      setMarkers(startCoords, endCoords);
+                  });
+              });
+          }
     
-            // 출발지와 도착지로 경로 계산 및 표시
-            function calculateAndDisplayRoute() {
-                var startInput = document.getElementById('start').value.trim();
-                var endInput = document.getElementById('end').value.trim();
-    
-                // 주소 유효성 검사를 추가
-                if (!startInput) {
-                    alert("출발지를 입력해주세요.");
-                    return;
-                }
-                if (!endInput) {
-                    alert("도착지를 입력해주세요.");
-                    return;
-                }
-    
-                geocodeAddress(startInput, function(startLocation) {
-                    geocodeAddress(endInput, function(endLocation) {
-                        var request = {
-                            origin: startLocation,
-                            destination: endLocation,
-                            travelMode: 'WALKING'
-                        };
-    
-                        directionsService.route(request, function(response, status) {
-                            if (status === 'OK') {
-                                directionsRenderer.setDirections(response);
-                            } else {
-                                window.alert('경로 요청에 실패했습니다. 오류 코드: ' + status);
-                            }
-                        });
-                    });
-                });
-            }
-    
-            // 주소를 지오코딩하여 좌표로 변환하는 함수
+        
+            // 지오코딩 함수
             function geocodeAddress(address, callback) {
-                geocoder.geocode({ 'address': address }, function(results, status) {
-                    if (status === 'OK') {
-                        callback(results[0].geometry.location);
-                    } else {
-                        window.alert('주소를 찾을 수 없습니다: ' + address + '. 오류 코드: ' + status);
+                $.ajax({
+                    method: "GET",
+                    url: "https://apis.openapi.sk.com/tmap/geo/fullAddrGeo?version=1&format=json",
+                    data: {
+                        "appKey": "cVhL84LFFs9gcbpfi3KiH1uTXSIzKo196YqIK3eN",
+                        "fullAddr": address
+                    },
+                    success: function(response) {
+                        if (response.coordinateInfo) {
+                            var coordinates = response.coordinateInfo.coordinate[0];
+                            var lat = coordinates.newLat;
+                            var lng = coordinates.newLon;
+                            callback({ lat: lat, lng: lng });
+                        } else {
+                            alert("주소를 찾을 수 없습니다: " + address);
+                        }
+                    },
+                    error: function(request, status, error) {
+                        console.log("Geocoding error: ", error);
                     }
                 });
             }
+    
+        
+            // 경로 탐색 및 그리기 함수
+            function findRoute(startX, startY, endX, endY) {
+              console.log("경로 탐색 시작: ", startX, startY, endX, endY);
+              var headers = {};
+              headers["appKey"] = "cVhL84LFFs9gcbpfi3KiH1uTXSIzKo196YqIK3eN";
+
+              fetch("https://apis.openapi.sk.com/tmap/routes/pedestrian?version=1&format=json", {
+                  method: "POST",
+                  headers: headers,
+                  body: JSON.stringify({
+                      "startX": startX,
+                      "startY": startY,
+                      "endX": endX,
+                      "endY": endY,
+                      "reqCoordType": "WGS84GEO",
+                      "resCoordType": "EPSG3857",
+                      "startName": "출발지",
+                      "endName": "도착지"
+                  })
+              })
+              .then(response => response.json())
+              .then(data => {
+                  console.log("경로 탐색 응답: ", data); // 응답 결과 출력
+                  var resultData = data.features;
+                  var drawInfoArr = [];
+
+                  for (var i in resultData) {
+                      var geometry = resultData[i].geometry;
+                      if (geometry.type == "LineString") {
+                          for (var j in geometry.coordinates) {
+                              var latlng = new Tmapv2.Point(geometry.coordinates[j][0], geometry.coordinates[j][1]);
+                              var convertPoint = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
+                              var convertChange = new Tmapv2.LatLng(convertPoint._lat, convertPoint._lng);
+                              drawInfoArr.push(convertChange);
+                          }
+                      }
+                  }
+
+                  drawLine(drawInfoArr);
+              })
+              .catch(error => {
+                  console.error('경로 탐색 에러:', error);
+                  alert("경로 탐색 중 문제가 발생했습니다.");
+              });
+            }
+
+            function centerMapOnRoute(startCoords, endCoords) {
+              var centerLat = (parseFloat(startCoords.lat) + parseFloat(endCoords.lat)) / 2;
+              var centerLng = (parseFloat(startCoords.lng) + parseFloat(endCoords.lng)) / 2;
+              map.setCenter(new Tmapv2.LatLng(centerLat, centerLng));
+              map.setZoom(12);  // 줌 레벨을 설정해서 적절한 경로가 보이도록 함
+          }
+    
+        
+            // 경로 표시
+            function drawLine(arrPoint) {
+                var polyline_ = new Tmapv2.Polyline({
+                    path: arrPoint,
+                    strokeColor: "#FF0000",
+                    strokeWeight: 6,
+                    map: map
+                });
+                resultdrawArr.push(polyline_);
+            }
+        
+            // 지도 중심 설정
+            function centerMapOnRoute(startCoords, endCoords) {
+                var centerLat = (parseFloat(startCoords.lat()) + parseFloat(endCoords.lat())) / 2;
+                var centerLng = (parseFloat(startCoords.lng()) + parseFloat(endCoords.lng())) / 2;
+                map.setCenter(new Tmapv2.LatLng(centerLat, centerLng));
+                map.setZoom(12);
+            }
+        
+            // 출발지와 도착지에 마커 표시
+            function setMarkers(startCoords, endCoords) {
+                if (marker_s) marker_s.setMap(null); // 기존 마커 제거
+                if (marker_e) marker_e.setMap(null);
+        
+                marker_s = new Tmapv2.Marker({
+                    position: startCoords,
+                    icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
+                    map: map
+                });
+        
+                marker_e = new Tmapv2.Marker({
+                    position: endCoords,
+                    icon: "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
+                    map: map
+                });
+            }
+            function initGoogleMap() {
+              // Google Maps와 관련된 초기화 로직
+              placesService = new google.maps.places.PlacesService(map);
+              console.log("Google Maps 초기화 완료");
+            }
+
+                 
+    
+  
     
             // 근처 산책로 찾기
             function findNearbyPaths() {
@@ -597,7 +674,7 @@
       <div class="container">
           <div class="row content">
               <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
-                  <img src="/images/features-4.svg" class="img-fluid" alt="추천 산책로 이미지">
+                  <img src="images/features-4.svg" class="img-fluid" alt="추천 산책로 이미지">
               </div>
               <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
                   <h3>해당 사용자의 추천 산책로의 결과</h3>
@@ -609,6 +686,7 @@
       </div>
   </section>
     </html>
+    
     
     <!-- <li><i class="bi bi-check"></i>여기까지 지도 코드.</li> -->
     
@@ -823,22 +901,6 @@
           <span>수학 전공</span>
           <span>20201223</span>
           <span>프론트엔드</span>
-          <div class="social">
-            <a href=""><i class="bi bi-twitter"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="member" data-aos="fade-up" data-aos-delay="300">
-          <div class="pic"><img src="/images\박수민_프로필_.png" alt=""></div>
-          <h4>박수민</h4>
-          <span>경영학 전공 </span>
-          <span>20201105</span>
-          <span>백엔드</span>
           <div class="social">
             <a href=""><i class="bi bi-twitter"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
