@@ -49,8 +49,21 @@ router.get('/', function(req, res) {
   res.sendFile(__dirname + "/public/index.html")
 })
 
+//산책로 추천
+router.post("/success", async function(req,res,next){
+  let body = req.body;
 
+  let result = models.paths.create(
+    {
+      start: body.start, 
+      end: body.end,
+      // searchRoute: body.searchRoute,
+      // findTrails: body.findTrails,
+  }
+)
+    res.redirect("/users/success");
 
+});
 
 
 // 로그인 GET
