@@ -463,7 +463,6 @@
                 }
             }
 
-            // 경로 검색
             function searchRoute() {
                 const startAddress = $("#start").val();
                 const endAddress = $("#end").val();
@@ -473,7 +472,6 @@
                     return;
                 }
 
-                // 지오코딩을 통해 출발지와 도착지 좌표 변환
                 geocodeAddress(startAddress, function (startCoords) {
                     geocodeAddress(endAddress, function (endCoords) {
                         findRoute(startCoords.lng, startCoords.lat, endCoords.lng, endCoords.lat);
@@ -697,19 +695,23 @@
                                 고도 차이: ${elevationDifference.toFixed(2)} 미터<br>
                                 점수: ${score}
                               </div>`,
-                    map: null, // 지도에 표시할 때만 설정
+                    map: null, // 초기엔 null로 설정
                     type: 2
                 });
 
                 markerList.push({ marker: marker, infoWindow: infoWindow });
 
                 marker.addListener("click", function () {
-                    if (activeInfoWindow) {
-                        activeInfoWindow.setVisible(false); // 이전에 열린 정보창을 닫음
+                    if (infoWindow.getMap()) {
+                        infoWindow.setMap(null); // 정보창이 열려있으면 닫음
+                        activeInfoWindow = null; // 현재 열린 정보창을 초기화
+                    } else {
+                        if (activeInfoWindow) {
+                            activeInfoWindow.setMap(null); // 다른 정보창이 열려있으면 닫음
+                        }
+                        infoWindow.setMap(map); // 정보창을 다시 열림
+                        activeInfoWindow = infoWindow; // 현재 열린 정보창을 저장
                     }
-                    infoWindow.setMap(map); // 정보창을 지도에 표시
-                    infoWindow.setVisible(true); // 정보창을 보이게 설정
-                    activeInfoWindow = infoWindow; // 현재 열려있는 정보창을 저장
                 });
             }
 
@@ -736,12 +738,16 @@
                 hiddenMarkerList.push({ marker: marker, infoWindow: infoWindow });
 
                 marker.addListener("click", function () {
-                    if (activeInfoWindow) {
-                        activeInfoWindow.setVisible(false); // 이전에 열린 정보창을 닫음
+                    if (infoWindow.getMap()) {
+                        infoWindow.setMap(null); // 정보창이 열려있으면 닫음
+                        activeInfoWindow = null; // 현재 열린 정보창을 초기화
+                    } else {
+                        if (activeInfoWindow) {
+                            activeInfoWindow.setMap(null); // 다른 정보창이 열려있으면 닫음
+                        }
+                        infoWindow.setMap(map); // 숨겨진 정보창을 다시 열림
+                        activeInfoWindow = infoWindow; // 현재 열린 정보창을 저장
                     }
-                    infoWindow.setMap(map); // 숨겨진 정보창을 지도에 표시
-                    infoWindow.setVisible(true); // 정보창을 보이게 설정
-                    activeInfoWindow = infoWindow; // 현재 열려있는 정보창을 저장
                 });
 
                 // 산책로 전체보기 버튼 표시
@@ -751,7 +757,6 @@
             function showAllTrails() {
                 hiddenMarkerList.forEach(markerObj => {
                     markerObj.marker.setMap(map);  // 숨겨진 마커 표시
-                    markerObj.infoWindow.setMap(map); // 숨겨진 정보창도 지도에 연결
                 });
             }
 
@@ -781,6 +786,7 @@
 </body>
 
 </html>
+
 
     
     <!-- <li><i class="bi bi-check"></i>여기까지 지도 코드.</li> -->
