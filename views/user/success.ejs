@@ -100,73 +100,13 @@
 
     <!-- ======= Features Section ======= -->
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .section-title {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-      .features {
-        padding: 80px 0;
-      }
-      .content {
-        margin-top: 40px;
-      }
-      .content ul {
-        margin-top: 20px;
-        list-style: none;
-        padding: 0;
-      }
-      .content ul li {
-        margin-bottom: 10px;
-      }
-      /* 정보 입력 폰트 두께 */
-      /* 
-      .content ul li label {
+      /* .content ul li label {
         font-weight: bold;
       } */
-      .content ul li input[type="text"],
-      .content ul li input[type="password"],
-      .content ul li select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 4px;
-      }
-      .content ul li input[type="text"]:focus,
-      .content ul li input[type="password"]:focus,
-      .content ul li select:focus {
-        outline: none;
-        border-color: #85b7d9;
-      }
-      .content ul li button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-      }
-      .content ul li button:hover {
-        background-color: #0056b3;
-      }
-    </style>
+    </style> 
     <section id="features" class="features section-bg">
-      <div class="container">
-        <div class="section-title">
+      <div class="userInfo">
+        <div class="featires-title">
           <h2 data-aos="fade-in">사용자 정보 입력</h2>
           <p data-aos="fade-in">해당 사용자 정보를 입력하면, 이에 따른 적절한 산책로를 추천해줍니다. <br> 안내에 따라 사용자의 기본 정보, 개인 정보, 건강 정보 등을 입력해 제출해주세요.</br> </p>
         </div>
@@ -187,7 +127,7 @@
           </div>
         </div> -->
   
-        <div class="row content">
+        <div class="row info1">
           <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
             <img src="/images/features-2.svg" class="img-fluid" alt="">
           </div>
@@ -332,7 +272,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>산책로 추천 및 경로 공유</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
         <style>
             body {
                 font-family: 'Arial', sans-serif;
@@ -396,9 +336,9 @@
         <div class="container">
             <h1>산책로 추천 및 경로 공유</h1>
 
-            
+            <form action="/users/success" method="post">
             <div id="controls" class="row">
-              <form action="/users/success" method="post">
+              
                 
                 <div class="col-md-6">
                     <label for="start" class="form-label">출발지:</label>
@@ -736,7 +676,7 @@
     <section id="portfolio" class="portfolio section-bg">
       <div class="container">
 <br>
-        <div class="section-title">
+        <div class="portfolio-title">
           <h2 data-aos="fade-in">SHOP</h2>
           <p data-aos="fade-in">랜덤 미션으로 획득한 리워드 포인트를 통해 원하는 상품을 구매할 수 있는 구매 페이지이다.<br>여러가지 브랜드의 기프티콘 뿐만 아니라 건강, 식품까지 다양한 카테고리로 준비가 되어있다. </br>
 

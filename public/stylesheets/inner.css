@@ -13,7 +13,12 @@ body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
     background-color: #ecf0f3;
-    
+  }
+
+  .container{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
   }
   
   a {
@@ -454,7 +459,67 @@ body {
   /*--------------------------------------------------------------
   # Sections General
   --------------------------------------------------------------*/
-  
+  .features-section-bg {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  .userInfo{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .featires-title,
+  .portfolio-title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .features {
+    padding: 80px 0;
+  }
+
+  .info1{
+    margin-top: 40px;
+  }
+  .info1 ul {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .info1 ul li {
+    margin-bottom: 10px;
+  }
+ 
+  .info1 ul li input[type="text"],
+  .info1 ul li input[type="password"],
+  .info1 ul li select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 4px;
+  }
+  .info1 ul li input[type="text"]:focus,
+  .info1 ul li input[type="password"]:focus,
+  .info1 ul li select:focus {
+    outline: none;
+    border-color: #85b7d9;
+  }
+  .info1 ul li button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  .info1 ul li button:hover {
+    background-color: #0056b3;
+  }
   /*--------------------------------------------------------------
   # Breadcrumbs
   --------------------------------------------------------------*/
