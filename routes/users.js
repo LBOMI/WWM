@@ -61,7 +61,7 @@ router.post("/success", async function(req,res,next){
       // findTrails: body.findTrails,
   }
 )
-    res.redirect("/users/success");
+    // res.redirect("/users/success");
 
 });
 
@@ -226,7 +226,7 @@ router.post("/passwordch", async function(req,res,next){
 });
 
 // 사용자 정보
-router.post("/success", async function(req,res,next){
+router.post("/success1", async function(req,res,next){
   let body = req.body;
 
   let result = models.preferences.create(
@@ -247,7 +247,7 @@ router.post("/success", async function(req,res,next){
   // } else {
   //   console.log('Not found!')
     
-    res.redirect("/users/success");
+    // res.redirect("/users/success");
   // }
 });
 
