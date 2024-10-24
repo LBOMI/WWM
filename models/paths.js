@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       end: { 
         type: DataTypes.STRING
-      }
+      },
       // searchRoute: {
       //   type: DataTypes.STRING
       // }
       // findTrails:{
       //   type: DataTypes.STRING,
-      //   defaultValue: 'score'
+      //   defaultValue: '1'
       // }
       
     }, { timestamps: false});
