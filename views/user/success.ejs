@@ -132,7 +132,7 @@
             <img src="/images/features-2.svg" class="img-fluid" alt="">
           </div>
           <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
-            <form action="/users/success" method="post">
+            <form action="/users/success1" method="post">
             <h3>사용자의 기본 정보</h3>
             <ul>
               <li><i class="bi bi-check"></i><label for="nick" >이름(닉네임) : </label><input id="nick" type="text" name="uname"></li>
@@ -178,12 +178,13 @@
                   <option value="2시간이상">2시간 이상</option>
                 </datalist>
               </li>
-              <li><button name="score" onclick="calculateScore()">점수 계산하기</button></li>
+              <li><button name="score" >저장</button></li>
             </ul>
           </form>
           </div>
         </div>
       </div>
+      <button class="mea">측정하기</button>
     </section>
   
     <script>
@@ -263,8 +264,12 @@
       }
     </script>
 
-    <!-- <li><i class="bi bi-check"></i>여기부터 지도 코드.</li> -->
 
+    
+
+
+
+    <!-- <li><i class="bi bi-check"></i>여기부터 지도 코드.</li> -->
     <!DOCTYPE html>
     <html lang="ko">
     
@@ -281,7 +286,7 @@
     
             #map {
                 height: 500px;
-                width: 100%;
+                width: 800px;
                 margin-top: 20px;
                 border-radius: 8px;
                 border: 1px solid #ced4da;
@@ -289,13 +294,18 @@
     
             #controls,
             #tags {
+               
+                width: 1000px;
+                margin: auto;
                 margin-top: 20px;
                 padding: 20px;
                 background-color: #ffffff;
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                
             }
-    
+
+           
             h1 {
                 margin-top: 20px;
                 text-align: center;
@@ -306,16 +316,20 @@
                 margin-bottom: 5px;
                 font-weight: bold;
                 color: #495057;
+                width: 700px;
             }
     
             .form-control {
                 margin-bottom: 10px;
             }
+             
+           
     
             .btn-primary {
                 background-color: #007bff;
                 border-color: #007bff;
                 width: 100%;
+      
             }
     
             .btn-secondary {
@@ -323,6 +337,8 @@
                 border-color: #6c757d;
                 width: 100%;
                 margin-top: 10px;
+                float: right;
+                width: 100%;
             }
         </style>
         <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=cVhL84LFFs9gcbpfi3KiH1uTXSIzKo196YqIK3eN"></script>
@@ -336,28 +352,36 @@
         <div class="container">
             <h1>산책로 추천 및 경로 공유</h1>
 
-            <form action="/users/success" method="post">
-            <div id="controls" class="row">
+           
+            <div id="controls" class="row" >
               
+              <form action="/users/success" method="post">
                 
-                <div class="col-md-6">
+                <div class="aaa">
                     <label for="start" class="form-label">출발지:</label>
                     <input type="text" id="start" name="start" class="form-control" placeholder="출발지를 입력하세요">
-                </div>
-                <div class="col-md-6">
+                  </div>
+                  <div class="aaa">
                     <label for="end" class="form-label">도착지:</label>
                     <input type="text" id="end" name="end" class="form-control" placeholder="도착지를 입력하세요">
                 </div>
-                <div class="col-md-6">
+                
+                <div class="aaa">
                     <button class="btn btn-primary"  onclick="searchRoute()">길 찾기</button>
+                    
                 </div>
               
               </form>
-                <div class="col-md-6">
+                
+                <div class="aaa">
                     <button class="btn btn-secondary" name="findTrails" id="findTrails">근처 산책로 찾기</button>
                 </div>
-            </div>
-          
+              
+              </div>              
+            
+            
+            
+         
             <div id="tags" class="row">
                 <div class="col-md-12">
                     <label for="path-tags" class="form-label">경로 태그:</label>
@@ -663,7 +687,6 @@
     </body>
     
     </html>
- 
     
     
     
