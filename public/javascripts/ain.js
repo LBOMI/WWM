@@ -19,20 +19,33 @@ function login() {
     var id = document.querySelector('#up_id');
     var pw = document.querySelector('#up_pw');
     var r_pw = document.querySelector('#r_pw');
-    var email = document.querySelector('#email')
+    var email = document.querySelector('#email');
+    var pwdcheck = /^[a-zA-Z0-9]+$/
+    
   
+
     if(id.value == "" || pw.value == "" || r_pw.value == "" || email.value == "") {
-        alert("회원가입을 할 수 없습니다.")
+        alert("회원 정보를 입력해주세요.");
+        return false;
     }
     else {
-        if(pw.value !== r_pw.value) {
-            alert("비밀번호를 확인해주세요.")
+        if (!pwdcheck.test(pw.value) || len(pw.value)<8){
+            alert('비밀번호는 영대소문자, 숫자로 구성된 8글자 이상으로 조합하시오.');
+            return false;
         }
         else {
-            location.href = 'index.html'
+            if (pw.value !== r_pw.value) {
+                alert("비밀번호를 확인해주세요.")
+                return false;
+                } 
+                else {
+                location.href ="http://localhost:3000/users/sign_up"
+                }
+            }
+        return true;
         }
-    }
-  }
+    
+}
 
   function updateUser() {
     var id = document.querySelector('#up_id');
