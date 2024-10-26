@@ -31,6 +31,8 @@ console.log("이승현", body);
 })
 
 
+
+
 // 메인페이지
 router.get('/main', function(req, res, next) {
   res.render("user/메인");
@@ -97,10 +99,11 @@ router.post("/login", async function(req,res,next){
         console.log("비밀번호 일치");
         //세션 설정
         req.session.name = body.userName;
+        res.redirect("/users/login");
       } else {
         console.log("비밀번호 불일치");
+        res.send("<script>alert('비밀번호를 다시 확인해주세요.');location.href='/users/login';</script>")
       }
-      res.redirect("/users/login");
   } else {
     console.log("ㄴㄴ");
     res.send("<script>alert('회원정보가 없습니다.');location.href='/users/login';</script>");
