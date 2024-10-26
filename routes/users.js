@@ -170,10 +170,9 @@ router.get("/modi", loggedin, function(req, res) {
 router.post("/modi", async function(req,res,next){
 
   let body = req.body;
-  console.log("이승현", body);
-    let inputPassword = body.password;
-    let salt = Math.round((new Date().valueOf() * Math.random())) + "";
-    let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
+  let inputPassword = body.password;
+  let salt = Math.round((new Date().valueOf() * Math.random())) + "";
+  let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
   
     let result = models.user.update(
        {
@@ -187,20 +186,7 @@ router.post("/modi", async function(req,res,next){
           },
         },
   )
-
-  // let body = req.body;
-
-  // console.log("이승현", body);
-  // let result = models.user.update(
-  //   //   {
-  //   //     name: body.userName,
-  //   //     email: body.userEmail,
-  //   //     password: hashPassword,
-  //   //     salt: salt
-  //   // }
-  //   body
-  // )
-  res.redirect("/users/modi");
+  res.send("<script>alert('성공적으로 수정되었습니다.');location.href='/users/mypage';</script>")
 });
 
 //탈퇴-비밀번호 확인
