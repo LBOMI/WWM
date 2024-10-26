@@ -16,7 +16,7 @@ body {
   }
 
   .container{
-    max-width: 1000px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -575,11 +575,14 @@ body {
     container-type: inline-size;
     display: flex;
     flex-direction: row;
-    margin: 50px 220px 50px 220px;
+    margin: auto;
+    width: 1200px;
+    height: 800px;
+    
   }
   
   .box1 {
-    margin-top:10px;
+    margin-top:30px;
   }
   
   
@@ -603,7 +606,7 @@ body {
   }
 
   .wrapper{
-    position: relative;
+    /* position: relative; */
     width: 300px;
     height: 450px;
     padding: 10px;
@@ -869,17 +872,20 @@ body {
   }
   
   /* 내용 */
-  .contents {
+
+  .box2 {
+    margin-top: 30px;
     width: 900px;
+  }
+  .contents {
     height: 270px;
     border-radius: 10px;
-    margin-top: 10px;
     box-shadow: -3px -3px 7px #ffffff,
     3px 3px 5px #ceced1;
+  
   }
   
  
-  
   .box2 .contents p {
     width: 300px;
     border-radius: 5em;
@@ -895,42 +901,48 @@ body {
   }
   
   .contents .dou {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
-    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
   }
   
-  .box3 {
+  /* .box3 {
     margin-top: 20px;
     height: 400px;
-  }
+  } */
   
   .state {
-    width: 900px;
+   
     height: 350px;
     border-radius: 10px;
-    /* margin: 10px 0px 30px 0px; */
+    margin-top: 20px;
+    /* margin: 0px 0px 30px 0px; */
     box-shadow: -3px -3px 7px #ffffff,
     3px 3px 5px #ceced1;
-    position: absolute;
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
   }
   
   .state .st {
-    /* margin-top: 50px;
-    margin-left: 50px; */
-    margin: 50px 0 0 50px;
+    /* margin-top: 50px; */
+    /* margin-left: 50px; */
+    margin: 20px 0 0 50px;
   }
   .state p {
     font-weight: bold;
-    /* margin: 80px 700px 100px 70px; */
     line-height: 40px;
   }
   
   @container (max-width: 700px) {
-    .box {
-      display: inline-flex;
+    
+    .box2{
+      height: 100px;
     }
+
+    
+
+   
   }
   /* @media (max-width: 991px) {
     .contents {
