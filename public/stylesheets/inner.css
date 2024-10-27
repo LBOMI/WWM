@@ -580,7 +580,6 @@ body {
     margin: auto;
     width: 1200px;
     height: 800px;
-    
   }
   
   .box1 {
@@ -793,8 +792,14 @@ body {
   
   .wrapper .reprofile {
     margin-top: 30px;
-    color: rgb(104, 102, 102);
   }
+
+  #openPopUp {
+    border: none;
+    color: rgb(98, 98, 98);
+    text-decoration: underline;
+  }
+
   /* 목차 */
   .card {
     /* margin: 0px 50px 30px 150px; */
