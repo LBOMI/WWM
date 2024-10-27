@@ -4,6 +4,7 @@ const models = require("../models");
 
 const crypto = require('crypto');
 const mysql = require("mysql");
+const { existsSync } = require('fs');
 
 //회원가입
 router.get('/sign_up', function(req, res, next) {
@@ -133,8 +134,12 @@ router.get("/mypage", loggedin, async function(req, res) {
     // attributes: ['name', 'age'],
   });
   console.log(result);
+
+  let ni = await models.profiles.findOne({
+
+  });
  
-  res.render('user/마이페이지', { body, result});
+  res.render('user/마이페이지', { body, result, ni});
 });
 
 
@@ -227,22 +232,36 @@ router.post("/success1", async function(req,res,next){
       exerciseTime: body.exerciseTime,
   }
 )
-
-  // if (result) {
-    
-  //   console.log("5252") // 'My Title'
-    
-
-  // } else {
-  //   console.log('Not found!')
-    
-    // res.redirect("/users/success");
-  // }
 });
 
 router.get("/reprofile",  function(req,res,next) {
   res.render("user/reprofile");
 })
+
+router.post("/reprofile", async function(req,res,next){
+  let body = req.body;
+
+//   let result = models.profiles.create(
+//     {
+//       name: body.name, 
+//       introduce: body.introduce,
+//       // searchRoute: body.searchRoute,
+//       // findTrails: body.findTrails,
+//   }
+// )
+
+  let result = models.profiles.update(
+    {
+      name: body.name,
+      introduce: body.introduce,
+  }, {
+       where: {
+         name : body.name,
+       },
+     },
+)
+console.log("dd")
+});
 
 module.exports = router;
 
