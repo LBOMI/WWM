@@ -791,7 +791,10 @@ body {
     pointer-events: auto;
   }
   
-  
+  .wrapper .reprofile {
+    margin-top: 30px;
+    color: rgb(104, 102, 102);
+  }
   /* 목차 */
   .card {
     /* margin: 0px 50px 30px 150px; */

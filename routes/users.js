@@ -240,6 +240,9 @@ router.post("/success1", async function(req,res,next){
   // }
 });
 
+router.get("/reprofile",  function(req,res,next) {
+  res.render("user/reprofile");
+})
 
 module.exports = router;
 
