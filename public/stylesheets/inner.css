@@ -371,13 +371,15 @@ body {
   #hero {
     width: 100%;
     height: 850px;
-    margin-bottom: 100px;
+    margin: auto;
+    /* margin-bottom: 100px; */
     padding: 0 0 0 0;
-    background: #71be88;
+    background-color: #71be88;
   
   }
   
   #hero .container {
+    width: 70%;
     height: 800px;
     display: flex;
     align-items: center;
@@ -1286,85 +1288,84 @@ body {
     width: 250px;
     margin: 100px 300px;
   }
+
 /* 산책로 추천 */
-  /* .ref {
-    font-family: 'Arial', sans-serif;
-    background-color: #ecf0f3;
-    width: 1000px;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
- 
+#ref {
+  font-family: 'Arial', sans-serif;
+  background-color: #ecf0f3;
 }
+
+#ref .container{
+max-width: 1000px;
+margin: 0 auto;
+padding: 20px;
+background-color: #ecf0f3;
+}
+
 #map {
   height: 500px;
-  width: 100%;
+  width: 800px;
   margin-top: 20px;
   border-radius: 8px;
   border: 1px solid #ced4da;
 }
 
- #controls{
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#controls,
+#tags {
  
-  }
-  #tags {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
-  } */
-
-  /* .aaa {
-    position:absolute;
-    left: 50%;
-    top:
-  } */
+  width: 1000px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   
-  /* .ref .h1 {
-    margin-top: 20px;
-    text-align: center;
-    color: #343a40;
 }
 
-  .form-label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #495057;
+
+#ref .container h1 {
+  margin-top: 20px;
+  text-align: center;
+  color: #343a40;
 }
 
-.form-control {
-    margin-bottom: 10px;
+#controls .form-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #495057;
+  width: 700px;
+}
+
+#scoreSelect {
+  margin-bottom: 10px;
+}
+
+
+
+#controls .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  width: 100%;
+
+}
+
+#controls .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  width: 100%;
+  margin-top: 10px;
+  float: right;
+  width: 100%;
 }
  
-
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    width: 100%;
-
-}
-
-.btn-secondary {
-    background-color: #6c757d;
-    border-color: #6c757d;
-    width: 100%;
-    margin-top: 10px;
-    float: right;
-} */
   /*--------------------------------------------------------------
   # Portfolio
   --------------------------------------------------------------*/
-  /* .portfolio{
-    display: block;
-  } */
+  .portfolio{
+    width: 70%;
+    margin: auto;
+  }
   
   .portfolio .portfolio-item {
     margin-bottom: 30px;
@@ -1558,8 +1559,18 @@ body {
   /*--------------------------------------------------------------
   # Team
   --------------------------------------------------------------*/
+  #team {
+    margin-top: 100px;
+  }
+  
+  #team .container {
+    width: 60%;
+    margin: auto;
+  }
+  
   .team .section-title {
-    margin:50px 50px;
+    margin:auto;
+    text-align: center;
   }
 
   .team .row {
@@ -1749,27 +1760,46 @@ body {
   /*--------------------------------------------------------------
   # Frequently Asked Questions
   --------------------------------------------------------------*/
+  #faq {
+    margin-top: 100px;
+  }
+  
+  #faq .container {
+    margin: auto;
+    text-align: center;
+    width: 70%;
+  }
+
+  #faq .section-title {
+    margin-bottom: 50px;
+  }
+
   .faq .faq-item {
     margin: 20px 0;
     padding: 20px 0;
     border-bottom: 1px solid #dde8f1;
   }
   
+  #faq .col-lg-5 {
+    position: relative;
+  }
   .faq .faq-item i {
     color: #9bbbd7;
-    font-size: 20px;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    top:30%;
     float: left;
-    line-height: 0;
-    padding: 13px 0 0 0;
-    margin: 0;
   }
   
   .faq .faq-item h4 {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 26px;
     font-weight: 500;
-    margin: 0 0 10px 28px;
     font-family: "Poppins", sans-serif;
+    position: absolute;
+    left: 7%;
+    top:30%;
   }
   
   .faq .faq-item p {
@@ -1779,6 +1809,21 @@ body {
   /*--------------------------------------------------------------
   # Contact
   --------------------------------------------------------------*/
+  #contact{
+    margin-top: 100px;
+    margin-bottom: 70px;
+  }
+  
+  #contact .container {
+    margin: auto;
+    text-align: center;
+    width: 70%;
+  }
+
+  #contact .section-title {
+    margin-bottom: 30px;
+  }
+
   .contact .info-box {
     color: #444444;
     text-align: center;
