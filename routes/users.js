@@ -4,7 +4,7 @@ const models = require("../models");
 
 const crypto = require('crypto');
 const mysql = require("mysql");
-const { existsSync } = require('fs');
+// const { existsSync } = require('fs');
 
 //회원가입
 router.get('/sign_up', function(req, res, next) {
@@ -28,7 +28,7 @@ console.log("이승현", body);
    }
 )
 
-  res.redirect("/users/login");
+  res.redirect("/users/profileset");
 })
 
 
@@ -52,21 +52,6 @@ router.get('/', function(req, res) {
   res.sendFile(__dirname + "/public/index.html")
 })
 
-//산책로 추천
-router.post("/success", async function(req,res,next){
-  let body = req.body;
-
-  let result = models.paths.create(
-    {
-      start: body.start, 
-      end: body.end,
-      // searchRoute: body.searchRoute,
-      // findTrails: body.findTrails,
-  }
-)
-    // res.redirect("/users/success");
-
-});
 
 
 // 로그인 GET
@@ -135,7 +120,7 @@ router.get("/mypage", loggedin, async function(req, res) {
   });
   console.log(result);
 
-  let ni = await models.profiles.findOne({
+  let ni = await models.profile.findOne({
 
   });
  
@@ -175,11 +160,12 @@ router.get("/modi", loggedin, function(req, res) {
 router.post("/modi", async function(req,res,next){
 
   let body = req.body;
+  console.log("이승현", body);
   let inputPassword = body.password;
   let salt = Math.round((new Date().valueOf() * Math.random())) + "";
   let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
   
-    let result = models.user.update(
+    let result = await models.user.update(
        {
          name: body.name,
          email: body.email,
@@ -187,10 +173,21 @@ router.post("/modi", async function(req,res,next){
          salt: salt
      }, {
           where: {
-            name : body.name
+            name : body.name,
           },
         },
-  )
+  );
+
+  if (result) {
+    console.log("성공") // 'My Title'
+    // res.send("<script>alert('탈퇴되었습니다.');location.href='/';</script>");
+
+  } else {
+    console.log('Not found!')
+    // res.send("<script>alert('이메일을 확인해주세요.');location.href='/users/passwordch';</script>");
+    // res.redirect("/users/passwordch");
+  }
+
   res.send("<script>alert('성공적으로 수정되었습니다.');location.href='/users/mypage';</script>")
 });
 
@@ -234,6 +231,43 @@ router.post("/success1", async function(req,res,next){
 )
 });
 
+//산책로 추천
+router.post("/success", async function(req,res,next){
+  let body = req.body;
+
+  let result = models.paths.create(
+    {
+      start: body.start, 
+      end: body.end,
+      // searchRoute: body.searchRoute,
+      // findTrails: body.findTrails,
+  }
+)
+    // res.redirect("/users/success");
+
+});
+
+
+//프로필 설정
+router.get("/profileset",  function(req,res,next) {
+  res.render("user/profileset");
+})
+
+router.post("/profileset", async function(req,res,next){
+  let body = req.body;
+
+  let result = models.profile.create(
+    {
+      name: body.name, 
+      introduce: body.introduce,
+      searchRoute: body.searchRoute,
+      findTrails: body.findTrails,
+  }
+)
+res.redirect("/users/login");
+});
+
+//프로필 수정
 router.get("/reprofile",  function(req,res,next) {
   res.render("user/reprofile");
 })
@@ -250,7 +284,7 @@ router.post("/reprofile", async function(req,res,next){
 //   }
 // )
 
-  let result = models.profiles.update(
+  let result = await models.profile.update(
     {
       name: body.name,
       introduce: body.introduce,
@@ -260,7 +294,7 @@ router.post("/reprofile", async function(req,res,next){
        },
      },
 )
-console.log("dd")
+// res.redirect("/users/mypage");
 });
 
 module.exports = router;

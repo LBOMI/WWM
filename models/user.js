@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
+      // primaryKey: true
     },
     email: { //이메일 컬럼을 고유키로 두고, email 양식이 맞는지 확인하는 validate 추가
       type: DataTypes.STRING,
@@ -18,9 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     }
   });
-
+  user.removeAttribute('id');
   return user;
 };
+
+
 
 const mysql = require("mysql");
 
