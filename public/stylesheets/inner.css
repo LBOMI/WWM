@@ -1981,7 +1981,7 @@ background-color: #ecf0f3;
   # Footer
   --------------------------------------------------------------*/
   #footer {
-    background: url("../img/footer-bg.jpg") center center no-repeat;
+    /* background: url("../images/산책2.jpg") center center no-repeat; */
     color: #fff;
     font-size: 14px;
     position: relative;
@@ -1994,7 +1994,7 @@ background-color: #ecf0f3;
     right: 0;
     top: 0;
     bottom: 0;
-    background: rgba(26, 46, 64, 0.85);
+    background: #50402c;
     z-index: 1;
   }
   
