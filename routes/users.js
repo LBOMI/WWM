@@ -137,7 +137,7 @@ function loggedin(req, res, next) {
   if(req.session.name) {
     next(); //통과
   } else {
-    res.send("먼저 로그인 해주세요.");
+    res.send("<script>alert('로그인이 필요합니다.');location.href='/users/login';</script>");
   }
 }
 
