@@ -24,6 +24,8 @@
   <link href="\stylesheets\glightbox.min.css" rel="stylesheet">
   <link href="\stylesheets\swiper-bundle.min.css" rel="stylesheet">
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" >
+
   <!-- Template Main CSS File -->
   <link href="\stylesheets/inner.css" rel="stylesheet">
 
@@ -34,6 +36,33 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <style>
+    .exer {
+        width: 1700px;
+        height: 800px;
+    }
+
+    .exer-box {
+        border: 1px solid #25252500; /*텍스트에 margin-top을 주기 위해*/
+        border-radius: 10px;
+        width: 900px;
+        height: 640px;
+        box-shadow: -3px -3px 7px #ffffff,
+    3px 3px 5px #ceced1;
+        margin-top: 30px; 
+    }
+
+    .exer-txt p{
+        margin-top: 50px;
+        margin-left: 50px;
+        padding: 10px;
+    }
+
+    .exer-txt i{
+        padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -102,155 +131,58 @@
       </div>
     </section><!-- End Breadcrumbs Section -->
 
+    <section>
 
-    <section class = "box">
-     <div class="box1">
-     <div class="wrapper">
-        <div class="img-area">
-          <div class="inner-area">
-            <!-- <img src="\images\제목_없는_아트워크_(5).jpg" alt=""> -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#a4e5af" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 32 0 160c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/></svg>
-          </div>
+        <section class = "box">
+            <div class="box1">
+            <div class="wrapper">
+               <div class="img-area">
+                 <div class="inner-area">
+                   <!-- <img src="\images\제목_없는_아트워크_(5).jpg" alt=""> -->
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#a4e5af" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0l32 0c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64l32 0c123.7 0 224 100.3 224 224l0 32 0 160c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160C100.3 320 0 219.7 0 96z"/></svg>
+                 </div>
+               </div>
+               <!-- <div class="icon arrow"><i class="fas fa-arrow-left"></i></div>
+               <div class="icon dots"><i class="fas fa-ellipsis-v"></i></div> -->
+               <div class="name"><%=ni.name%></div>
+               <div class="about"><%=ni.introduce%></div>
+               <div class="social-icons">
+                 <a href="#" class="fb"><i class="bi bi-twitter" style="color:rgb(171, 191, 163)"></i></a>
+                 <a href="#" class="twitter"><i class="bi bi-facebook" style="color:rgb(171, 191, 163)"></i></a>
+                 <a href="#" class="insta"><i class="bi bi-instagram" style="color:rgb(171, 191, 163)"></i></a>
+                 <a href="#" class="yt"><i class="bi bi-linkedin" style="color:rgb(171, 191, 163)"></i></a>
+               </div>
+               <div class="reprofile">
+                 <button id="openPopUp">프로필 수정</button>
+               </div>
+             </div>
+
+             <div class="card bg-light mb-3" style="max-width: 20rem;">
+                <div class="card-header">목차</div>
+                
+                  
+                    <ul class="card-body" style="list-style-image: url(\images\paw.png) ;">
+                      <li><a href="http://localhost:3000/users/modi">회원 정보 수정</a></li>
+                      <li><a href="http://localhost:3000/users/exercise">나의 활동</a></li>
+                      <li>리워드</li>
+                    </ul>
+                
+              </div>
+              </div>
+        <div class="exer"> <!--내용 전체 크기 -->
+            <div class="exer-box"> <!--컨텐츠 크기-->
+                <div class="exer-txt">
+                    <p><i class="fa-solid fa-person-walking fa-lg"></i> 나의 목표는 _____ 입니다.</p>
+                    <p>총 km: </p>
+                    <p>최근 활동:</p>
+                    
+                </div>
+
+            </div>
+
         </div>
-        <!-- <div class="icon arrow"><i class="fas fa-arrow-left"></i></div>
-        <div class="icon dots"><i class="fas fa-ellipsis-v"></i></div> -->
-        <div class="name"><%=ni.name%></div>
-        <div class="about"><%=ni.introduce%></div>
-        <div class="social-icons">
-          <a href="#" class="fb"><i class="bi bi-twitter" style="color:rgb(171, 191, 163)"></i></a>
-          <a href="#" class="twitter"><i class="bi bi-facebook" style="color:rgb(171, 191, 163)"></i></a>
-          <a href="#" class="insta"><i class="bi bi-instagram" style="color:rgb(171, 191, 163)"></i></a>
-          <a href="#" class="yt"><i class="bi bi-linkedin" style="color:rgb(171, 191, 163)"></i></a>
-        </div>
-        <div class="reprofile">
-          <button id="openPopUp">프로필 수정</button>
-        </div>
-      </div>
-    
-
-    
-      <div class="card bg-light mb-3" style="max-width: 20rem;">
-        <div class="card-header">목차</div>
-        
-          
-            <ul class="card-body" style="list-style-image: url(\images\paw.png) ;">
-              <li><a href="http://localhost:3000/users/modi">회원 정보 수정</a></li>
-              <li><a href="http://localhost:3000/users/exercise">나의 활동</a></li>
-              <li>리워드</li>
-            </ul>
-        
-      </div>
-      </div>
-
-    <div class="box2">
-      <div class="contents">
-        <p><나의 산책 현황></p>
-        <div class="dou">
-        <div class="doughnut1">
-        <canvas id="doughnut-chart" width="300" height="170"></canvas>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-        <script>  
-        new Chart(document.getElementById("doughnut-chart"), {
-          type: 'doughnut',
-          data: {
-            datasets: [
-            {
-            label: "day",
-            backgroundColor: ["#3cba9f", "#C0C0C0"],
-            data: [8000,1696]
-            }
-            ]
-         },
-          options: {
-            cutoutPercentage: 55,
-            responsive: false,
-            title: {
-              display: true,
-            }
-          }
-        });
-        </script>
-        <p>day</p>
-        </div>
-
-        <div class="doughnut2">
-          <canvas id="doughnut2-chart" width="300" height="170"></canvas>
-    
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    
-          <script>  
-          new Chart(document.getElementById("doughnut2-chart"), {
-            type: 'doughnut',
-            data: {
-              datasets: [
-              {
-              label: "Month",
-              backgroundColor: ["#3cba9f", "#C0C0C0"],
-              data: [5000,4696]
-              }
-              ]
-            },
-            options: {
-              cutoutPercentage: 55,
-              responsive: false,
-              title: {
-                display: true,
-              }
-            }
-          });
-          </script>
-          <p>Month</p>
-        </div>
-
-        <div class="doughnut3">
-          <canvas id="doughnut3-chart" width="300" height="170"></canvas>
-    
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    
-          <script>  
-          new Chart(document.getElementById("doughnut3-chart"), {
-            type: 'doughnut',
-            data: {
-              datasets: [
-              {
-              label: "relative",
-              backgroundColor: ["#3cba9f", "#C0C0C0"],
-              data: [7000,2696]
-              }
-              ]
-            },
-            options: {
-              cutoutPercentage: 55,
-              responsive: false,
-              title: {
-                display: true,
-              }
-            }
-          });
-          </script>
-          <p>relative</p>
-        </div>
-      </div>
-      </div>
-
-      
-      <div class="state">
-        <div class="st">
-        <p>이름: <%=result.name%> </br>
-          나이: <%=result.age%></br>
-          거주 지역: <%=result.city%></br>
-          건강 상태: <%=result.healthcondition%></br>
-          리워드: 
-        </p>
-      </div>
-      </div>
-
-    
-    </div>
     </section>
-  </main><!-- End #main -->
+    
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

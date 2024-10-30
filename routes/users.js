@@ -297,6 +297,20 @@ router.post("/reprofile", async function(req,res,next){
 // res.redirect("/users/mypage");
 });
 
+//나의 활동
+// router.get("/exercise",  function(req,res,next) {
+//   res.render("user/exercise");
+// })
+
+router.get("/exercise", loggedin, async function(req, res) {
+  let body = req.body;
+
+  let ni = await models.profile.findOne({
+
+  });
+ 
+  res.render('user/exercise', { body, ni});
+});
 module.exports = router;
 
 
