@@ -573,8 +573,6 @@ body {
 
   /* 마이페이지 사용자 정보 */
   .box {
-    container-name: box-container;
-    container-type: inline-size;
     display: flex;
     flex-direction: row;
     margin: auto;
@@ -1397,12 +1395,18 @@ background-color: #ecf0f3;
   # Portfolio
   --------------------------------------------------------------*/
   .portfolio{
-    width: 60%;
-    margin: auto;
+   width: 100%;
+   margin:auto;
+
   }
   
+ #portfolio .row {
+  margin:auto;
+ }
+
   .portfolio .portfolio-item {
     margin-bottom: 30px;
+    width: 33%; /* 9개라서?? */
   }
   
   .portfolio #portfolio-flters {
@@ -1410,6 +1414,7 @@ background-color: #ecf0f3;
     margin: 0 0 35px 0;
     list-style: none;
     text-align: center;
+    margin:auto;
   }
   
   .portfolio #portfolio-flters li {
@@ -1440,6 +1445,7 @@ background-color: #ecf0f3;
     overflow: hidden;
     border-radius: 8px;
     z-index: 1;
+    margin: auto;
   }
   
   .portfolio .portfolio-wrap::before {
@@ -1525,6 +1531,27 @@ background-color: #ecf0f3;
     bottom: 0;
   }
   
+  /* @media (max-width: 992px) {
+    .portfolio .portfolio-item {
+      margin-bottom: 30px;
+      width: 250px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .pricing .box {
+      max-width: 80%;
+      margin: 0 auto 30px auto;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    .pricing .box {
+      max-width: 100%;
+      margin: 0 auto 30px auto;
+    }
+  }
+   */
   /*--------------------------------------------------------------
   # Portfolio Details
   --------------------------------------------------------------*/
