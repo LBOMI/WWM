@@ -45,7 +45,7 @@
               <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Modification</label>
             <div class="login-form">
               
-                  <form action="/users/modi" method="post">
+                  <form action="/users/modi" method="post" onsubmit="return updateUser();" >
                   <div class="sign-up-htm">
                     <div class="group">
                       <label for="user" class="label">ID</label>
@@ -66,7 +66,7 @@
                       <input id="email" type="text" class="input" name="email">
                     </div>
                     <div class="group">
-                      <input type="submit" class="button" value="Modification" id="sign-up" style="color:black" onclick="updateUser();">
+                      <input type="submit" class="button" value="Modification" id="sign-up" style="color:black" >
                     </div>
                     <div class="hr"></div>
                     <!-- <div class="foot-lnk">
