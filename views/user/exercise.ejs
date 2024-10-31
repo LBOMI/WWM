@@ -51,12 +51,21 @@
         box-shadow: -3px -3px 7px #ffffff,
     3px 3px 5px #ceced1;
         margin-top: 30px; 
+        position: relative; 
+    }
+
+    .exer-txt {
+        position: absolute;
+        top: 25%;
+        margin-left: 70px;
     }
 
     .exer-txt p{
-        margin-top: 50px;
-        margin-left: 50px;
-        padding: 10px;
+        padding: 20px;
+    }
+
+    .exer-txt button {
+      border: none;
     }
 
     .exer-txt i{
@@ -172,9 +181,9 @@
         <div class="exer"> <!--내용 전체 크기 -->
             <div class="exer-box"> <!--컨텐츠 크기-->
                 <div class="exer-txt">
-                    <p><i class="fa-solid fa-person-walking fa-lg"></i> 나의 목표는 _____ 입니다.</p>
-                    <p>총 km: </p>
-                    <p>최근 활동:</p>
+                    <p><i class="fa-solid fa-person-walking fa-lg"></i> 나의 목표는 <%=a.goal%> 입니다. <button id="openG">> 목표 설정하기</button></p>
+                    <p><i class="fa-solid fa-person-walking fa-lg"></i>총 km: </p>
+                    <p><i class="fa-solid fa-person-walking fa-lg"></i>최근 활동: </p>
                     
                 </div>
 
