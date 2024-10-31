@@ -309,31 +309,33 @@ router.get("/exercise", loggedin, async function(req, res) {
 
   });
 
-  console.log(req.query);
+  let no = await models.goal_set.findOne({
+
+  });
 
   
-  res.render('user/exercise', { body, ni, a:req.query});
+  res.render('user/exercise', { body, ni, no});
 });
 
 
 //나의 활동 - 목표 설정하기
 router.get("/goal_set", async function(req,res,next) {
-  console.log(req.query);
-res.render('user/goal_set', {a: req.query})
+ 
+res.render('user/goal_set')
 })
 
 router.post("/goal_set", async function(req,res,next){
-//   let body = req.body;
+  let body = req.body;
 
-//   let result = models.goal_set.create(
-//     {
-//       goal: body.goal, 
-//   }
-// )
-// res.redirect("/users/login");
+  let result = models.goal_set.create(
+    {
+      goal: body.goal, 
+  }
+)
 
-console.log(req.body);
-res.render('user/goal_set', {a: req.body})
+
+
+res.render('user/goal_set', {result})
 });
 
 module.exports = router;
