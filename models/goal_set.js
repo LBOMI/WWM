@@ -5,10 +5,17 @@ module.exports = (sequelize, DataTypes) => {
       goal: {
         type: DataTypes.STRING,
         primaryKey: true,
-      
       },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      }
       
-    }, { timestamps: false});
+    });
     
     return goal_set;
   };
