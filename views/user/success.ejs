@@ -184,7 +184,7 @@
           </div>
         </div>
       </div>
-      <button class="mea">측정하기</button>
+      <!-- <button class="mea">측정하기</button> -->
     </section>
   
     <script>
@@ -285,7 +285,7 @@
            
             <div id="controls" class="row" >
               
-              <form action="/users/success" method="post">
+              <form action="/users/success" method="post" onsubmit="return searchRoute();">
                 
                 <div class="aaa">
                     <label for="start" class="form-label">출발지:</label>
@@ -297,7 +297,7 @@
                 </div>
                 
                 <div class="aaa">
-                    <button class="btn btn-primary"  onclick="searchRoute()">길 찾기</button>
+                    <button class="btn btn-primary">길 찾기</button>
                 </div>
               
               </form>
@@ -383,7 +383,7 @@
 
                 if (!startPlace || !endPlace) {
                     alert("출발지와 도착지를 입력하세요.");
-                    return;
+                    return false;
                 }
 
                 const startCoords = {
