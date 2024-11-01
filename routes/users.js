@@ -121,7 +121,7 @@ router.get("/mypage", loggedin, async function(req, res) {
   console.log(result);
 
   let ni = await models.profile.findOne({
-
+ 
   });
  
   res.render('user/마이페이지', { body, result, ni});
@@ -201,7 +201,7 @@ router.post("/passwordch", async function(req,res,next){
 
   let result = await models.user.destroy ({
     where: {
-      email : body.email
+      name : body.name
   } 
   });
   if (result) {
