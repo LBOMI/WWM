@@ -217,7 +217,11 @@ router.post("/passwordch", async function(req,res,next){
 });
 
 // 사용자 정보
-router.post("/success1", async function(req,res,next){
+router.get("/success_",  function(req,res,next) {
+  res.render("user/success_");
+})
+
+router.post("/success_", async function(req,res,next){
   let body = req.body;
 
   let result = models.preferences.create(
@@ -229,6 +233,31 @@ router.post("/success1", async function(req,res,next){
       exerciseTime: body.exerciseTime,
   }
 )
+res.render('user/success_', {});
+});
+
+//사용자 기본정보 수정
+router.get("/repreferences",  function(req,res,next) {
+  res.render("user/기본정보수정");
+})
+
+router.post("/repreferences", async function(req,res,next){
+  let body = req.body;
+
+  let result = await models.preferences.update(
+    {
+      name: body.name,
+      age: body.age,
+      city: body.city,
+      healthcondition: body.healthcondition,
+      exerciseTime: body.exerciseTime
+  }, {
+       where: {
+         name : body.name,
+       },
+     },
+)
+res.render('user/success_', {});
 });
 
 //산책로 추천

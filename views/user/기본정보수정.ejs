@@ -42,29 +42,32 @@
           <div class="login-wrap">
             <div class="login-html">
               
-              <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">회원정보</label>
-              <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab"><a href="/users/repreferences">기본정보</a></label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab"><a href="/users/modi">회원정보</a></label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab"><a href="/users/repreferences">기본정보</a></label>
+              
             <div class="login-form">
               
-                  <form action="/users/modi" method="post" onsubmit="return updateUser();" >
+                  <form action="/users/repreferences" method="post" onsubmit="return repreferences();" >
                   <div class="sign-up-htm">
                     <div class="group">
-                      <label for="user" class="label">ID</label>
-                      <input id="up_id" type="text" class="input" name="name">
+                      <label for="user" class="label">이름</label>
+                      <input id="M_name" type="text" class="input" name="name">
                     </div>
                     <div class="group">
-                      <label for="pass" class="label">Password</label>
-                      <input id="up_pw" type="password" class="input" data-type="password" name="password">
+                      <label for="pass" class="label">나이</label>
+                      <input id="M_age" type="password" class="input" data-type="password" name="age">
                     </div>
                     <div class="group">
-                      <label for="pass" class="label">Repeat Password</label>
-                      <input id="r_pw" type="password" class="input" data-type="password">
-                      <p id="password_eq">비밀번호가 일치합니다!</p>
-                      <p id="password_neq">비밀번호가 일치하지 않습니다.</p>
+                      <label for="pass" class="label">거주 지역</label>
+                      <input id="M_city" type="text" class="input" name="city">
                     </div>
                     <div class="group">
-                      <label for="pass" class="label">Email Address</label>
-                      <input id="email" type="text" class="input" name="email">
+                        <label for="pass" class="label">건강 상태</label>
+                        <input id="M_state" type="text" class="input" name="healthcondition">
+                      </div>
+                    <div class="group">
+                        <label for="pass" class="label">평균 운동 시간</label>
+                        <input id="M_time" type="text" class="input" name="exerciseTime">
                     </div>
                     <div class="group">
                       <input type="submit" class="button" value="Modification" id="sign-up" style="color:black" >
@@ -75,9 +78,6 @@
                     </div> -->
                   </div>
                 </form>
-                <div class="out">
-                <button class="button" type="button" ><a href='http://localhost:3000/users/passwordch'>탈퇴하기</a></button>
-                </div>
               </div>
             </div>
       </section>
