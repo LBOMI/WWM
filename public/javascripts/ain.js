@@ -88,3 +88,21 @@ function login() {
         return true;
     }
   }
+
+  //기본정보 수정
+  function repreferences() {
+    var name = document.querySelector('#M_name');
+    var age = document.querySelector('#M_age');
+    var city = document.querySelector('#M_city');
+    var state = document.querySelector('#M_state');
+    var time = document.querySelector('#M_time');
+  
+    if(name.value == "" || age.value == "" || city.value == "" || state.value == "" || time.value == "") {
+        alert("빈칸을 채워주세요.")
+        return false;
+    }
+    else {
+        alert("기본정보가 수정되었습니다.")
+        return true;
+    }
+  }
