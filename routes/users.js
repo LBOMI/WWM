@@ -227,11 +227,11 @@ router.post("/modi", async function(req,res,next){
 });
 
 //탈퇴-비밀번호 확인
-router.get("/passwordch",  function(req,res,next) {
-  res.render("user/passwordch");
+router.get("/namech",  function(req,res,next) {
+  res.render("user/namech");
 })
 
-router.post("/passwordch", async function(req,res,next){
+router.post("/namech", async function(req,res,next){
   let body = req.body;
 
   let result = await models.user.destroy ({
@@ -246,7 +246,7 @@ router.post("/passwordch", async function(req,res,next){
 
   } else {
     console.log('Not found!')
-    res.send("<script>alert('이메일을 확인해주세요.');location.href='/users/passwordch';</script>");
+    res.send("<script>alert('이름을 확인해주세요.');location.href='/users/namech';</script>");
     // res.redirect("/users/passwordch");
   }
 });
