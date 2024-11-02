@@ -32,26 +32,26 @@ res.send("<script>alert('환영합니다!');location.href='/users/preferences';<
 })
 
 //기본정보설정
-// router.get('/preferences', function(req, res, next) {
-//   res.render("user/기본정보설정");
-// });
+router.get('/preferences', function(req, res, next) {
+  res.render("user/기본정보설정");
+});
 
-// router.post("/preferences", async function(req,res,next){
-//   let body = req.body;
+router.post("/preferences", async function(req,res,next){
+  let body = req.body;
 
-//   let result = models.preferences.create(
-//     {
-//       name: body.uname, 
-//       age: body.age,
-//       city: body.city,
-//       healthcondition: body.healthCondition,
-//       exerciseTime: body.exerciseTime,
-//   }
-// )
+  let result = models.preferences.create(
+    {
+      name: body.uname, 
+      age: body.age,
+      city: body.city,
+      healthcondition: body.healthCondition,
+      exerciseTime: body.exerciseTime,
+  }
+)
 
-// res.redirect("/users/login");
+res.redirect("/users/login");
 
-// });
+});
 
 function profileset(req, res, next) {
   //로그인 후 세션이 있다면 req.session.name이 항상 있음
