@@ -28,11 +28,39 @@ router.post("/sign_up", async function(req,res,next){
    }
 )
 
-res.send("<script>alert('환영합니다!');location.href='/users/profileset';</script>")
+res.send("<script>alert('환영합니다!');location.href='/users/preferences';</script>")
 })
 
+//기본정보설정
+// router.get('/preferences', function(req, res, next) {
+//   res.render("user/기본정보설정");
+// });
 
+// router.post("/preferences", async function(req,res,next){
+//   let body = req.body;
 
+//   let result = models.preferences.create(
+//     {
+//       name: body.uname, 
+//       age: body.age,
+//       city: body.city,
+//       healthcondition: body.healthCondition,
+//       exerciseTime: body.exerciseTime,
+//   }
+// )
+
+// res.redirect("/users/login");
+
+// });
+
+function profileset(req, res, next) {
+  //로그인 후 세션이 있다면 req.session.name이 항상 있음
+  if(req.session.profileset) {
+    next(); //통과
+  } else {
+    res.redirect("/users/profileset");
+  }
+}
 
 // 메인페이지
 router.get('/main', function(req, res, next) {
@@ -116,13 +144,20 @@ router.get("/mypage", loggedin, async function(req, res) {
   let body = req.body;
 
   let result = await models.preferences.findOne({
-    // attributes: ['name', 'age'],
+    where: {
+      name: req.session.name,
+    },
+    
   });
   console.log(result);
 
-  let ni = await models.profile.findOne({
- 
-  });
+  let ni = await models.user.findOne({
+  
+      where: {
+        name: req.session.name,
+      },
+    
+  })
  
   res.render('user/마이페이지', { body, result, ni});
 });
@@ -216,25 +251,6 @@ router.post("/passwordch", async function(req,res,next){
   }
 });
 
-// 사용자 정보
-router.get("/success_",  function(req,res,next) {
-  res.render("user/success_");
-})
-
-router.post("/success_", async function(req,res,next){
-  let body = req.body;
-
-  let result = models.preferences.create(
-    {
-      name: body.uname, 
-      age: body.age,
-      city: body.city,
-      healthcondition: body.healthCondition,
-      exerciseTime: body.exerciseTime,
-  }
-)
-res.render('user/success_', {});
-});
 
 //사용자 기본정보 수정
 router.get("/repreferences",  function(req,res,next) {
@@ -257,7 +273,7 @@ router.post("/repreferences", async function(req,res,next){
        },
      },
 )
-res.render('user/success_', {});
+res.redirect("/users/mypage");
 });
 
 //산책로 추천
@@ -293,7 +309,8 @@ router.post("/profileset", async function(req,res,next){
       findTrails: body.findTrails,
   }
 )
-res.redirect("/users/login");
+req.session.profileset = body.name;
+res.redirect("/users/mypage");
 });
 
 //프로필 수정

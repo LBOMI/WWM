@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       // }
       
     }, { timestamps: false});
-    
+    profile.associate = models => {
+      profile.belongsTo(models.user, {foreignKey: "name", targetKey: "name"});
+    };
     return profile;
   };
 
