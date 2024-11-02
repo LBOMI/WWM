@@ -151,7 +151,7 @@ router.get("/mypage", loggedin, async function(req, res) {
   });
   console.log(result);
 
-  let ni = await models.user.findOne({
+  let ni = await models.profile.findOne({
   
       where: {
         name: req.session.name,
@@ -352,7 +352,9 @@ router.get("/exercise", loggedin, async function(req, res) {
   let body = req.body;
 
   let ni = await models.profile.findOne({
-
+    where: {
+      name: req.session.name,
+    },
   });
 
   let no = await models.goal_set.findOne({
