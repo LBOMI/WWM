@@ -72,3 +72,19 @@ function login() {
         location.href = 'http://localhost:3000/users/passwordch'
     }
   }
+
+  //프로필 수정
+  function reprofile() {
+    var PN = document.querySelector('#ProfileName');
+    var PI = document.querySelector('#ProfileIntro');
+  
+    if(PN.value == "" || PI.value == "") {
+        alert("빈칸을 채워주세요.")
+        res.render("user/reprofile");
+        return false;
+    }
+    else {
+        alert("프로필이 수정되었습니다.")
+        return true;
+    }
+  }
