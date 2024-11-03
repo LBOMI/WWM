@@ -9,9 +9,11 @@ module.exports = (sequelize, DataTypes) => {
       end: { 
         type: DataTypes.STRING
       },
-      // searchRoute: {
-      //   type: DataTypes.STRING
-      // }
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        // primaryKey: true
+      },
       // findTrails:{
       //   type: DataTypes.STRING,
       //   defaultValue: '1'
@@ -19,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       
     }, { timestamps: false});
   
+    // paths.associate = models => {
+    //   paths.hasMany(models.user, {foreignKey: null, targetKey: "name"});
+    // };
+
     return paths;
   };
 

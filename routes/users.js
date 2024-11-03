@@ -286,6 +286,7 @@ router.post("/success", async function(req,res,next){
     {
       start: body.start, 
       end: body.end,
+      name: req.session.name,
       // searchRoute: body.searchRoute,
       // findTrails: body.findTrails,
   }
@@ -353,18 +354,33 @@ router.post("/reprofile", async function(req,res,next){
 router.get("/exercise", loggedin, async function(req, res) {
   let body = req.body;
 
-  let ni = await models.user.findOne({
+  let name = await models.user.findOne({
     where: {
       name: req.session.name,
     },
   });
 
+  let [path, create] = await models.paths.findOrCreate({
+    where: { name: req.session.name, } ,
+    defaults: { start: " 아직 최근 활동이 없습니다."},
+    order: [["updateAt", "desc"]],
+    limit: 1
+  });
+  if (create) {
+    console.log(path.job);
+  }
+
   let no = await models.goal_set.findOne({
 
   });
 
+  // let na = await models.paths.findOne({
+  //   where: {
+  //     name : req.session.name,
+  //   },
+  // });
   
-  res.render('user/exercise', { body, ni, no});
+  res.render('user/exercise', { body, name, path, no });
 });
 
 
