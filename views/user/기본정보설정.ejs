@@ -36,17 +36,29 @@
   ======================================================== -->
 </head>
 
-<body>
 
+
+<body>
+<style>
+
+  .title {
+    text-align: center;
+    margin-bottom: 0px;
+    height: 50px;
+  }
+  .col-md-7 {
+    margin: auto;
+  }
+</style>
   
   
   <main id="main">
 
     <section id="features" class="features section-bg">
       <div class="userInfo">
-        <div class="featires-title">
+        <div class="title">
           <h2 data-aos="fade-in">사용자 정보 입력</h2>
-          <p data-aos="fade-in">해당 사용자 정보를 입력하면, 이에 따른 적절한 산책로를 추천해줍니다. <br> 안내에 따라 사용자의 기본 정보, 개인 정보, 건강 정보 등을 입력해 제출해주세요.</br> </p>
+          <p data-aos="fade-in">해당 사용자 정보를 입력하면, 이를 바탕으로 적절한 산책로를 추천해줍니다. <br> 안내에 따라 사용자의 기본적인 건강 정보를 입력하여 제출해주세요.</br> </p>
         </div>
   
         <!-- <div class="row content">
@@ -66,12 +78,12 @@
         </div> -->
   
         <div class="row info1">
-          <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+          <!-- <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
             <img src="/images/features-2.svg" class="img-fluid" alt="">
-          </div>
+          </div> -->
           <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
             <form action="/users/preferences" method="post">
-            <h3>사용자의 기본 정보</h3>
+            <!-- <h3>사용자의 기본 정보</h3> -->
             <ul>
               <li><i class="bi bi-check"></i><label for="nick" >이름 : </label><input id="nick" type="text" name="uname"></li>
               <li><i class="bi bi-check"></i>나이
@@ -99,20 +111,20 @@
                 </select>
               </li>
               <li><i class="bi bi-check"></i>건강 상태 확인(주로 이상이 있는 부위)
-                <!-- <input type="text" name="healthCondition" id="healthCondition" list="browser">
+                <input type="text" name="healthCondition" id="healthCondition" list="browser">
                 <datalist id="browser">
                   <option value="무릎">하체</option>
                   <option value="천식">호흡기</option>
                   <option value="당뇨">당뇨</option>
                   <option value="허리통증">상체</option>
-                </datalist> -->
-                <select name="healthCondition" id="healthCondition">
+                </datalist>
+                <!-- <select name="healthCondition" id="healthCondition">
                   <optgroup label="">
                     <option value="songpa-gu">송파구</option>
                     <option value="gangnam-gu">강남구</option>
                     <option value="seocho-gu">서초구</option>
                     <option value="junggu-gu">중구</option>
-                  </optgroup>
+                  </optgroup> -->
 
                 </select>
               </li>
