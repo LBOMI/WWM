@@ -151,13 +151,15 @@ router.get("/mypage", loggedin, async function(req, res) {
   });
   console.log(result);
 
-  let ni = await models.profile.findOne({
+  let ni = await models.user.findOne({
   
       where: {
         name: req.session.name,
       },
     
   })
+
+
  
   res.render('user/마이페이지', { body, result, ni});
 });
@@ -351,7 +353,7 @@ router.post("/reprofile", async function(req,res,next){
 router.get("/exercise", loggedin, async function(req, res) {
   let body = req.body;
 
-  let ni = await models.profile.findOne({
+  let ni = await models.user.findOne({
     where: {
       name: req.session.name,
     },
