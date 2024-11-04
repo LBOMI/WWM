@@ -1,6 +1,6 @@
 const models = require("./models/index.js");
 const session = require('express-session');
-const multer = require('multer');
+
 
 
 
@@ -27,7 +27,12 @@ connection.query("SELECT * FROM users", (err, result)=> {
 
 
 
-connection.end() //커넥션 끊기
+
+connection.end()//커넥션 끊기
+
+
+
+
 
 /*회원 정보 수정
 connection.connect(function(err) {
@@ -103,7 +108,28 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//이미지 업로드
+
+
+// app.post('/mypage', function(req, res){
+//   var responseData = {};
+//  console.log("아아")
+//   var query =  connection.query('select * from charta ', function(err,rows){ 
+
+//     responseData.day = [];
+//     if(err) throw console.log("ㅇㅇ");
+//     if(rows[0]){
+//       responseData.result = "ok";
+//       rows.forEach(function(val){
+//         responseData.day.push(val.day);
+//       })
+//     }
+//     else{
+//       responseData.result = "none";
+//       responseData.day = "";
+//     }
+//     res.json(responseData);
+//   });
+// });
 
 
 
