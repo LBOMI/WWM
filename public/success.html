@@ -480,12 +480,7 @@
                 autocompleteEnd = new google.maps.places.Autocomplete(document.getElementById('end'));
 
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        userLocation = { lat: lat, lng: lng };
-                        map.setCenter(new Tmapv2.LatLng(lat, lng));
-                    }, function () {
+                    navigator.geolocation.watchPosition(updateUserLocation, function () {
                         alert("위치 정보를 가져올 수 없습니다.");
                     });
                 }
