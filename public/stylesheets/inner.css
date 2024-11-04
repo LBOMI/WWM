@@ -882,12 +882,23 @@ body {
   }
   
   /* 내용 */
-  .exer-box {
-    margin-left: 20px;
+  .exer {
+    position: relative;
+    width: 900px;
+    height: 270px;
   }
 
+  .exer-box {
+    position: absolute;
+    top: 20%;
+    margin-left: 35px;
+    font-weight: 400;
+  }
+
+
+
   .a-tag {
-    
+    margin-bottom: 0px;
   }
   .tag {
     float: left;
