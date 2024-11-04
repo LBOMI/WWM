@@ -9,11 +9,17 @@ module.exports = (sequelize, DataTypes) => {
       end: { 
         type: DataTypes.STRING
       },
+      sppb: { 
+        type: DataTypes.STRING
+      },
+      s_altitude: { 
+        type: DataTypes.STRING
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
         // primaryKey: true
-      },
+      }
       // findTrails:{
       //   type: DataTypes.STRING,
       //   defaultValue: '1'

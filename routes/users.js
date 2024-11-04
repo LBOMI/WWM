@@ -159,11 +159,59 @@ router.get("/mypage", loggedin, async function(req, res) {
     
   })
 
+  let [path, create] = await models.paths.findOrCreate({
+    where: { name: req.session.name, } ,
+    defaults: { start: " 아직 최근 활동이 없습니다."},
+    order: [["updateAt", "desc"]],
+    limit: 1
+  });
+  if (create) {
+    console.log(path.job);
+  }
+
+
+//   let responseData = {};
+//  let query =  connection.query('select * from chartA ', function(err,rows){ 
+//     responseData.score = [];
+//     if(err) throw err;
+//     if(rows[0]){
+//       responseData.result = "ok";
+//       rows.forEach(function(val){
+//         responseData.day.push(val.day);
+//       })
+//     }
+//     else{
+//       responseData.result = "none";
+//       responseData.score = "";
+//     }
+//     res.json(responseData);
+//   });
 
  
-  res.render('user/마이페이지', { body, result, ni});
+  res.render('user/마이페이지', { body, result, path, ni});
 });
 
+
+// router.post('/mypage', function(req, res){
+//   var responseData = {};
+//   console.log("이승현")
+//   var query =  connection.query('select * from charta ', function(err,rows){ 
+    
+//     responseData.day = [];
+//     if(err) throw err;
+//     if(rows[0]){
+//       responseData.result = "ok";
+//       rows.forEach(function(val){
+//         responseData.day.push(val.day);
+//       })
+//     }
+//     else{
+//       responseData.result = "none";
+//       responseData.day = "";
+//     }
+//     res.json(responseData);
+//   });
+// });
 
 
 
@@ -286,6 +334,8 @@ router.post("/success", async function(req,res,next){
     {
       start: body.start, 
       end: body.end,
+      sppb: body.sppb,
+      s_altitude: body.s_altitude, 
       name: req.session.name,
       // searchRoute: body.searchRoute,
       // findTrails: body.findTrails,
@@ -403,6 +453,29 @@ router.post("/goal_set", async function(req,res,next){
 
 res.render('user/goal_set', {result})
 });
+
+
+// app.post('/mypage', function(req, res){
+//   var responseData = {};
+ 
+//   var query =  connection.query('select * from chartA ', function(err,rows){ 
+//     responseData.score = [];
+//     if(err) throw err;
+//     if(rows[0]){
+//       responseData.result = "ok";
+//       rows.forEach(function(val){
+//         responseData.day.push(val.day);
+//       })
+//     }
+//     else{
+//       responseData.result = "none";
+//       responseData.score = "";
+//     }
+//     res.json(responseData);
+//   });
+// });
+
+
 
 module.exports = router;
 

@@ -209,6 +209,24 @@
                     <label for="end" class="form-label">도착지:</label>
                     <input type="text" id="end" name="end" class="form-control" placeholder="도착지를 입력하세요">
                 </div>
+                <div class="aaa">
+                  <label for="sppbStageSelect" class="form-label">SPPB 단계 선택:</label>
+              <select id="sppbStageSelect" class="form-control" name="sppb">
+                  <option value="stage-1">SPPB 1단계 (매우 정상)</option>
+                  <option value="stage-2">SPPB 2단계 (정상)</option>
+                  <option value="stage-3">SPPB 3단계 (약간 위험)</option>
+                  <option value="stage-3">SPPB 4단계 (높은 위험)</option>
+              </select>  
+                </div>
+
+                <div class="aaa">
+                  <label for="scoreSelect" class="form-label">점수 선택:</label>
+                <select id="scoreSelect" class="form-control" name="s_altitude">
+                    <option value="0-4">0~4점 (고도차 0~30m)</option>
+                    <option value="5-8">5~8점 (고도차 30~100m)</option>
+                    <option value="9-12">9~12점 (고도차 100m 이상)</option>
+                </select>
+                </div>
                 
                 <div class="aaa">
                     <button class="btn btn-primary">길 찾기</button>
@@ -220,23 +238,7 @@
                     <button class="btn btn-secondary" name="findTrails" id="findTrails">근처 산책로 및 공원 찾기</button>
                 </div>
 
-                <div class="col-md-12 mt-3"> 
-                  <label for="sppbStageSelect" class="form-label">SPPB 단계 선택:</label>
-                  <select id="sppbStageSelect" class="form-control">
-                      <option value="stage-1">SPPB 1단계 (정상)</option>
-                      <option value="stage-2">SPPB 2단계 (중간 위험)</option>
-                      <option value="stage-3">SPPB 3단계 (높은 위험)</option>
-                  </select>  
-              </div>
-
-                <div class="col-md-12 mt-3">
-                  <label for="scoreSelect" class="form-label">점수 선택:</label>
-                  <select id="scoreSelect" class="form-control">
-                      <option value="0-4">0~4점 (고도차 0~30m)</option>
-                      <option value="5-8">5~8점 (고도차 30~100m)</option>
-                      <option value="9-12">9~12점 (고도차 100m 이상)</option>
-                  </select>
-              </div>
+                
               </div>              
             
             
@@ -258,7 +260,7 @@
 
             <!-- 지도 및 경로 탐색과 산책로 찾기 기능 -->
             <script>
-            let map;
+             let map;
             let autocompleteStart, autocompleteEnd;
             let markerList = [];
             let hiddenMarkerList = [];
@@ -266,6 +268,10 @@
             let userLocation = null;
             let activeInfoWindow = null;
             let currentPolyline = null;
+            let stayStartTime = null; // 산책로에 머문 시간을 측정하는 시작 시간
+            let stayDuration = {};
+            let userMarker;
+            let dynamicTrailLocations = [];
 
             function initMap() {
                 map = new Tmapv2.Map("map", {
@@ -280,23 +286,92 @@
                 autocompleteEnd = new google.maps.places.Autocomplete(document.getElementById('end'));
 
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        userLocation = { lat: lat, lng: lng };
-                        map.setCenter(new Tmapv2.LatLng(lat, lng));
-                    }, function () {
+                    navigator.geolocation.watchPosition(updateUserLocation, function () {
                         alert("위치 정보를 가져올 수 없습니다.");
                     });
                 }
             }
+              // 검색된 산책로 위치를 추가하는 함수 (산책로 검색 후 호출)
+            function addTrailLocation(lat, lng, name) {
+                dynamicTrailLocations.push({ lat: lat, lng: lng, name: name });
+                stayDuration[name] = 0; // 산책로별 머문 시간 초기화
+            }
+
+            function updateUserLocation(position) {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                userLocation = { lat: lat, lng: lng };
+
+                // 사용자의 현재 위치에 마커 추가 또는 업데이트
+                if (!userMarker) {
+                    // 처음 마커를 생성
+                    userMarker = new Tmapv2.Marker({
+                        position: new Tmapv2.LatLng(lat, lng),
+                        icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", // 파란색 마커 아이콘
+                        map: map,
+                    });
+                    map.setCenter(new Tmapv2.LatLng(lat, lng)); // 지도를 초기 위치에 맞게 설정
+                } else {
+                    // 마커 위치 업데이트
+                    userMarker.setPosition(new Tmapv2.LatLng(lat, lng));
+                }
+                checkStayDuration(lat, lng);
+            }
+            function checkStayDuration(lat, lng) {
+              const stayRadius = 100; // 산책로 반경 (미터 단위)
+
+              let nearTrail = null;
+              for (const trail of dynamicTrailLocations) {
+                  const distance = calculateDistance(lat, lng, trail.lat, trail.lng);
+
+                  if (distance <= stayRadius) {
+                      nearTrail = trail;
+                      if (!stayStartTime) {
+                          stayStartTime = new Date(); // 머문 시작 시간 기록
+                          console.log(`Started staying at ${trail.name}`);
+                      }
+                      break;
+                  }
+              }
+
+              if (!nearTrail && stayStartTime) {
+                  // 산책로를 벗어났다면 머문 시간 계산
+                  const stayEndTime = new Date();
+                  const timeSpent = (stayEndTime - stayStartTime) / 1000; // 초 단위로 계산
+                  if (stayDuration[nearTrail.name] !== undefined) {
+                      stayDuration[nearTrail.name] += timeSpent; // 총 머문 시간 업데이트
+                      console.log(`Stayed at ${nearTrail.name} for ${timeSpent.toFixed(2)} seconds`);
+                  }
+                  
+                  // 머문 시간 초기화
+                  stayStartTime = null;
+              }
+          }
+
+          // 두 지점 사이의 거리 계산 함수 (미터 단위)
+          function calculateDistance(lat1, lng1, lat2, lng2) {
+              const R = 6371e3; // 지구 반지름 (미터)
+              const φ1 = lat1 * (Math.PI / 180);
+              const φ2 = lat2 * (Math.PI / 180);
+              const Δφ = (lat2 - lat1) * (Math.PI / 180);
+              const Δλ = (lng2 - lng1) * (Math.PI / 180);
+
+              const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                        Math.cos(φ1) * Math.cos(φ2) *
+                        Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+              const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+              return R * c; // 두 지점 사이의 거리 반환
+          }
 
             function searchRoute() {
                 const startPlace = autocompleteStart.getPlace();
                 const endPlace = autocompleteEnd.getPlace();
+                const sppb = document.querySelector('#sppbStageSelect');
+                const s_altitude = document.querySelector('#scoreSelect');
 
-                if (!startPlace || !endPlace) {
-                    alert("출발지와 도착지를 입력하세요.");
+                if (!startPlace || !endPlace || !sppb || !s_altitude) {
+                    alert("빈칸을 채워주세요.");
                     return false;
                 }
 
@@ -544,7 +619,8 @@
                 });
 
                 hiddenMarkerList.push({ marker: marker, infoWindow: infoWindow });
-
+                allMarkerList.push(marker);
+              
                 marker.addListener("click", function () {
                     if (activeInfoWindow) {
                         activeInfoWindow.setMap(null);
@@ -592,6 +668,7 @@
 
                 if (currentPolyline) {
                     currentPolyline.setMap(null);
+                    currentPolyline = null; 
                 }
                 findRoute(userLocation.lng, userLocation.lat, lng, lat);
             }
