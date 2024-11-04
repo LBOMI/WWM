@@ -60,9 +60,20 @@
         margin-left: 70px;
     }
 
-    .exer-txt p{
-        padding: 20px;
+    .exer-txt .a-tag {
+      padding: 20px;
+      padding-bottom: 10px;
     }
+
+    .exer-txt .tag {
+      float: left;
+      margin-left: 30px;
+      margin-top: 0px;
+    }
+
+    /* .exer-txt p{
+        padding: 20px;
+    } */
 
     .exer-txt button {
       border: none;
@@ -181,9 +192,13 @@
         <div class="exer"> <!--내용 전체 크기 -->
             <div class="exer-box"> <!--컨텐츠 크기-->
                 <div class="exer-txt">
-                    <p><i class="fa-solid fa-person-walking fa-lg"></i> 나의 목표는 <%=no.goal%> 입니다. <button id="openG">> 목표 설정하기</button></p>
-                    <p><i class="fa-solid fa-person-walking fa-lg"></i>총 km: </p>
-                    <p><i class="fa-solid fa-person-walking fa-lg"></i>최근 활동: <%=path.start%></p>
+                    <p><div class="a-tag"><i class="fa-solid fa-person-walking fa-lg"></i> 나의 목표는 <%=no.goal%> 입니다. <button id="openG">> 목표 설정하기</button></div></p>
+                    <p><div class="a-tag"><i class="fa-solid fa-person-walking fa-lg"></i>총 km: </div></p>
+                    <p><div class="a-tag"><i class="fa-solid fa-person-walking fa-lg"></i>[ 최근 활동 ] </br>
+                          <div class="tag" style= "color: rgb(78, 78, 224)" >출발지</div> : <%=path.start%></br>
+                          <div class="tag" style= "color: rgb(78, 78, 224)">도착지</div> : <%=path.end%></br>
+                          <div class="tag" style= "color: rgb(78, 78, 224)">SPPB</div> : </p>
+                        </div>
                     
                 </div>
 
