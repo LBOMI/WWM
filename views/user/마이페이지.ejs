@@ -55,7 +55,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="http://localhost:3000/success.html">Home</a></li>
+          <li><a class="nav-link scrollto " href="/users/success">Home</a></li>
           <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
@@ -78,7 +78,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-          <li><a class="nav-link scrollto" href="#">My Page</a> </li>
+          <li><a class="nav-link scrollto" href="/users/mypage">My Page</a> </li>
           <li>
             <form action ="/users/logout" method="get">
               <input type = "submit" class="getstarted scrollto" value="Logout">
@@ -99,8 +99,8 @@
         <div class="d-flex justify-content-between align-items-center">
           <h2>My Page</h2>
           <ol>
-            <li><a href="/users/success">Home</a></li>
-            <li>My Page</li>
+            <!-- <li><a href="/users/success">Home</a></li>
+            <li>My Page</li> -->
           </ol>
         </div>
 
@@ -141,7 +141,7 @@
             <ul class="card-body" style="list-style-image: url(\images\paw.png) ;">
               <li><a href="http://localhost:3000/users/modi">회원 정보 수정</a></li>
               <li><a href="http://localhost:3000/users/exercise">나의 활동</a></li>
-              <li>리워드</li>
+              <!-- <li>리워드</li> -->
             </ul>
         
       </div>
@@ -150,13 +150,14 @@
     <div class="box2">
       <div class="state">
         <div class="st">
-        <p>이름: <%=result.name%> </br>
-          나이: <%=result.age%></br>
-          거주 지역: <%=result.city%></br>
-          건강 상태: <%=result.healthcondition%></br>
-          운동 시간: <%=result.exerciseTime%></br>
-          리워드: 
-        </p>
+        <h5><i class="fa-solid fa-person-walking fa-lg"></i>&nbsp; 사용자 기본 정보  </h5>
+        <p>이름:&nbsp;&nbsp; <%=result.name%> </br>
+        나이:&nbsp;&nbsp; <%=result.age%></br>
+        거주 지역:&nbsp;&nbsp; <%=result.city%></br>
+        건강 상태:&nbsp;&nbsp; <%=result.healthcondition%></br>
+        운동 시간:&nbsp;&nbsp; <%=result.exerciseTime%></br></p>
+          <!-- 리워드:  -->
+        
       </div>
     </div>
       <div class="contents">
@@ -165,7 +166,7 @@
               
                   <!-- <p><div class="a-tag"><i class="fa-solid fa-person-walking fa-lg"></i> 나의 목표는 입니다. <button id="openG">> 목표 설정하기</button></div></p>
                   <p><div class="a-tag"><i class="fa-solid fa-person-walking fa-lg"></i>총 km: </div></p> -->
-                  <p><div class="a-tag"><i class="fa-solid fa-person-walking fa-lg"></i>[ 최근 활동 ] </div>
+                  <p><div class="a-tag" style="font-weight: bold;"><i class="fa-solid fa-person-walking fa-lg"></i>&nbsp; 최근 활동  </div>
                         <div class="tag" style= "color: rgb(24, 24, 25)" >출발지 : <%=path.start%></div></br>
                         <div class="tag" style= "color: rgb(36, 36, 40)">도착지 : <%=path.end%></div></br>
                         <div class="tag" style= "color: rgb(22, 22, 23)">SPPB: <%=path.sppb%></div> </br>

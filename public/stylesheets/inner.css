@@ -891,14 +891,14 @@ body {
   .exer-box {
     position: absolute;
     top: 20%;
-    margin-left: 35px;
+    margin-left: 47px;
     font-weight: 400;
   }
 
 
 
   .a-tag {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   .tag {
     float: left;
@@ -917,7 +917,12 @@ body {
   
   }
   
- 
+  
+  h5 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
   .box2 .contents p {
     width: 300px;
     border-radius: 5em;
