@@ -4,7 +4,8 @@ const session = require('express-session');
 
 
 
-const mysql = require("mysql");
+// const mysql = require("mysql");
+const mysql = require("mysql2");
 
 const connection = mysql.createConnection({
   host: '127.0.0.1',
