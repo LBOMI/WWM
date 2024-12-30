@@ -9,8 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       age: { 
         type: DataTypes.STRING
-    
-        
       },
       city: {
         type: DataTypes.STRING
@@ -21,11 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       exerciseTime:{
         type: DataTypes.STRING
       }
-    //   score:{
-    //     type: DataTypes.STRING,
-    //     defaultValue: 'score',
-    //     allowNull: false
-    //   }
     });
   
     return preferences;
