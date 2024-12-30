@@ -18,19 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        // primaryKey: true
       }
-      // findTrails:{
-      //   type: DataTypes.STRING,
-      //   defaultValue: '1'
-      // }
+  
       
     }, { timestamps: false});
   
-    // paths.associate = models => {
-    //   paths.hasMany(models.user, {foreignKey: null, targetKey: "name"});
-    // };
-
     return paths;
   };
 
