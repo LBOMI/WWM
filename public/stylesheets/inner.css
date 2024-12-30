@@ -1357,15 +1357,16 @@ body {
 
 #ref .container{
 max-width: 1000px;
-margin: 0 auto;
+/* margin: 0 auto; */
 padding: 20px;
 background-color: #ecf0f3;
 }
 
 #map {
   height: 500px;
-  width: 800px;
+  width: 100%;
   margin-top: 20px;
+  margin: auto;
   border-radius: 8px;
   border: 1px solid #ced4da;
 }
