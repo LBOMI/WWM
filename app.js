@@ -20,31 +20,8 @@ connection.connect((err) => { //소켓 open
   console.log('socket open')
 });
 
-connection.query("SELECT * FROM users", (err, result)=> {
-  if (err) throw err;
-  console.log(result)
-})
-
-
-
-
-
 connection.end()//커넥션 끊기
 
-
-
-
-
-/*회원 정보 수정
-connection.connect(function(err) {
-  if (err) throw err;
-  var sql = "UPDATE users SET userName = 'body.userName', password = 'body.password', userEmail='body.userEmail' ";
-  connection.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log(result.affectedRows + " record(s) updated");
-  });
-}); 
-*/
 
 
 models.sequelize.sync().then(()=> {
@@ -108,30 +85,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
-// app.post('/mypage', function(req, res){
-//   var responseData = {};
-//  console.log("아아")
-//   var query =  connection.query('select * from charta ', function(err,rows){ 
-
-//     responseData.day = [];
-//     if(err) throw console.log("ㅇㅇ");
-//     if(rows[0]){
-//       responseData.result = "ok";
-//       rows.forEach(function(val){
-//         responseData.day.push(val.day);
-//       })
-//     }
-//     else{
-//       responseData.result = "none";
-//       responseData.day = "";
-//     }
-//     res.json(responseData);
-//   });
-// });
-
 
 
 module.exports = app;
