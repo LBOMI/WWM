@@ -10,15 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       introduce: { 
         type: DataTypes.STRING,
         
-      },
-      // searchRoute: {
-      //   type: DataTypes.STRING
-      // }
-      // findTrails:{
-      //   type: DataTypes.STRING,
-      //   defaultValue: '1'
-      // }
-      
+      },  
     }, { timestamps: false});
     profile.associate = models => {
       profile.belongsTo(models.user, {foreignKey: "name", targetKey: "name"});
