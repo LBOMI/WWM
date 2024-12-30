@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
     <script src="\javascripts\jquery-3.7.1.min.js"></script>
     
-    <!-- Favicons -->
-    <link href="/images/메인 아이콘.jpg" rel="icon">
-    <link href="/images/메인 아이콘.jpg">
-
-
     <script>
     $(function () {
         $("#password_eq").hide();
@@ -33,20 +28,21 @@
            }
        });
       })
+
+  
     </script>
 </head>
-<body> 
+<body>
   
     <section id="about" class="about section-bg">
         <div class="container">
           <div class="login-wrap">
             <div class="login-html">
-              
-              <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab"><a href="/users/modi">회원정보</a></label>
-              <input id="tab-2" type="radio" name="tab" class="sign-up" ><label for="tab-2" class="tab"><a href="/users/repreferences">기본정보</a></label>
+              <input id="tab-1" type="radio" name="tab" class="sign-in" ><label for="tab-1" class="tab"><a href="/users/login">Sign In</a></label>
+              <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Sign Up</label>
             <div class="login-form">
               
-                  <form action="/users/modi" method="post" onsubmit="return updateUser();" >
+                  <form action="/users/sign_up" method="post" onsubmit="return create_id();">
                   <div class="sign-up-htm">
                     <div class="group">
                       <label for="user" class="label">ID</label>
@@ -67,17 +63,15 @@
                       <input id="email" type="text" class="input" name="email">
                     </div>
                     <div class="group">
-                      <input type="submit" class="button" value="Modification" id="sign-up" style="color:black" >
+                      <input type="submit" class="button" value="Sign Up" id="sign-up" style="color:black" >
                     </div>
                     <div class="hr"></div>
-                    <!-- <div class="foot-lnk">
-                      <label for="tab-1">Already Member?</a>
-                    </div> -->
+                    <div class="foot-lnk">
+                      <label for="tab-1"><a href="/users/login">Already Member?</a>
+                    </div>
                   </div>
                 </form>
-                <div class="out">
-                <button class="button" type="button" ><a href='http://localhost:3000/users/namech'>탈퇴하기</a></button>
-                </div>
+
               </div>
             </div>
       </section>
