@@ -4,11 +4,12 @@ const models = require("../models");
 
 const crypto = require('crypto');
 const mysql = require("mysql");
-// const { existsSync } = require('fs');
+
+
 
 //회원가입
 router.get('/sign_up', function(req, res, next) {
-  res.render("user/회원가입");
+  res.render("user/signup");
 });
 
 
@@ -31,9 +32,10 @@ router.post("/sign_up", async function(req,res,next){
 res.send("<script>alert('환영합니다!');location.href='/users/preferences';</script>")
 })
 
+
 //기본정보설정
 router.get('/preferences', function(req, res, next) {
-  res.render("user/기본정보설정");
+  res.render("user/infoset");
 });
 
 router.post("/preferences", async function(req,res,next){
@@ -53,14 +55,7 @@ res.redirect("/users/login");
 
 });
 
-function profileset(req, res, next) {
-  //로그인 후 세션이 있다면 req.session.name이 항상 있음
-  if(req.session.profileset) {
-    next(); //통과
-  } else {
-    res.redirect("/users/profileset");
-  }
-}
+
 
 // 메인페이지
 router.get('/main', function(req, res, next) {
@@ -71,14 +66,6 @@ router.get('/main', function(req, res, next) {
 router.get("/success", loggedin, function(req, res) {
   res.render('user/success', {});
 });
-// router.get('/', function(req, res) {
-//   res.sendFile(__dirname + "/public/success.html")
-// })
-
-
-router.get('/', function(req, res) {
-  res.sendFile(__dirname + "/public/index.html")
-})
 
 
 
@@ -86,7 +73,7 @@ router.get('/', function(req, res) {
 router.get('/login', function(req, res, next) {
   let session = req.session;
 
-  res.render("user/로그인", {
+  res.render("user/login", {
     session : session
   });
 });
@@ -128,17 +115,6 @@ router.post("/login", async function(req,res,next){
 
 
 
-//회원정보가 있는지
-// function itnayo (req, res, next) {
-
-//   if (req.body.name) {
-//     next(); //통과
-//   }
-//   else {
-//     res.send("<script>alert('회원정보가 없습니다.');location.href='/users/login';</script>");
-//   }
-// }
-
 //마이페이지
 router.get("/mypage", loggedin, async function(req, res) {
   let body = req.body;
@@ -149,7 +125,6 @@ router.get("/mypage", loggedin, async function(req, res) {
     },
     
   });
-  console.log(result);
 
   let ni = await models.user.findOne({
   
@@ -168,51 +143,9 @@ router.get("/mypage", loggedin, async function(req, res) {
   if (create) {
     console.log(path.job);
   }
-
-
-//   let responseData = {};
-//  let query =  connection.query('select * from chartA ', function(err,rows){ 
-//     responseData.score = [];
-//     if(err) throw err;
-//     if(rows[0]){
-//       responseData.result = "ok";
-//       rows.forEach(function(val){
-//         responseData.day.push(val.day);
-//       })
-//     }
-//     else{
-//       responseData.result = "none";
-//       responseData.score = "";
-//     }
-//     res.json(responseData);
-//   });
-
  
-  res.render('user/마이페이지', { body, result, path, ni});
+  res.render('user/mypage', { body, result, path, ni});
 });
-
-
-// router.post('/mypage', function(req, res){
-//   var responseData = {};
-//   console.log("이승현")
-//   var query =  connection.query('select * from charta ', function(err,rows){ 
-    
-//     responseData.day = [];
-//     if(err) throw err;
-//     if(rows[0]){
-//       responseData.result = "ok";
-//       rows.forEach(function(val){
-//         responseData.day.push(val.day);
-//       })
-//     }
-//     else{
-//       responseData.result = "none";
-//       responseData.day = "";
-//     }
-//     res.json(responseData);
-//   });
-// });
-
 
 
 
@@ -237,15 +170,13 @@ router.get("/logout", function(req,res,next) {
 
 
 //회원정보수정
-
 router.get("/modi", loggedin, function(req, res) {
-  res.render('user/회원정보수정', {});
+  res.render('user/usermodi', {});
 });
 
 router.post("/modi", async function(req,res,next){
 
   let body = req.body;
-  console.log("이승현", body);
   let inputPassword = body.password;
   let salt = Math.round((new Date().valueOf() * Math.random())) + "";
   let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
@@ -264,17 +195,14 @@ router.post("/modi", async function(req,res,next){
   );
 
   if (result) {
-    console.log("성공") // 'My Title'
-    // res.send("<script>alert('탈퇴되었습니다.');location.href='/';</script>");
-
+    console.log("성공") 
   } else {
     console.log('Not found!')
-    // res.send("<script>alert('이메일을 확인해주세요.');location.href='/users/passwordch';</script>");
-    // res.redirect("/users/passwordch");
   }
 
   res.send("<script>alert('성공적으로 수정되었습니다.');location.href='/users/mypage';</script>")
 });
+
 
 //탈퇴-비밀번호 확인
 router.get("/namech",  function(req,res,next) {
@@ -291,20 +219,19 @@ router.post("/namech", async function(req,res,next){
   });
   if (result) {
     req.session.destroy();
-    console.log("성공") // 'My Title'
+    console.log("성공") 
     res.send("<script>alert('탈퇴되었습니다.');location.href='/';</script>");
 
   } else {
     console.log('Not found!')
     res.send("<script>alert('이름을 확인해주세요.');location.href='/users/namech';</script>");
-    // res.redirect("/users/passwordch");
   }
 });
 
 
 //사용자 기본정보 수정
 router.get("/repreferences",  function(req,res,next) {
-  res.render("user/기본정보수정");
+  res.render("user/infomodi");
 })
 
 router.post("/repreferences", async function(req,res,next){
@@ -326,6 +253,7 @@ router.post("/repreferences", async function(req,res,next){
 res.redirect("/users/mypage");
 });
 
+
 //산책로 추천
 router.post("/success", async function(req,res,next){
   let body = req.body;
@@ -337,8 +265,6 @@ router.post("/success", async function(req,res,next){
       sppb: body.sppb,
       s_altitude: body.s_altitude, 
       name: req.session.name,
-      // searchRoute: body.searchRoute,
-      // findTrails: body.findTrails,
   }
 )
     // res.redirect("/users/success");
@@ -366,6 +292,7 @@ req.session.profileset = body.name;
 res.redirect("/users/mypage");
 });
 
+
 //프로필 수정
 router.get("/reprofile",  function(req,res,next) {
   res.render("user/reprofile");
@@ -373,15 +300,6 @@ router.get("/reprofile",  function(req,res,next) {
 
 router.post("/reprofile", async function(req,res,next){
   let body = req.body;
-
-//   let result = models.profiles.create(
-//     {
-//       name: body.name, 
-//       introduce: body.introduce,
-//       // searchRoute: body.searchRoute,
-//       // findTrails: body.findTrails,
-//   }
-// )
 
   let result = await models.profile.update(
     {
@@ -395,86 +313,6 @@ router.post("/reprofile", async function(req,res,next){
 )
 // res.redirect("/users/mypage");
 });
-
-//나의 활동
-// router.get("/exercise",  function(req,res,next) {
-//   res.render("user/exercise");
-// })
-
-router.get("/exercise", loggedin, async function(req, res) {
-  let body = req.body;
-
-  let name = await models.user.findOne({
-    where: {
-      name: req.session.name,
-    },
-  });
-
-  let [path, create] = await models.paths.findOrCreate({
-    where: { name: req.session.name, } ,
-    defaults: { start: " 아직 최근 활동이 없습니다."},
-    order: [["updateAt", "desc"]],
-    limit: 1
-  });
-  if (create) {
-    console.log(path.job);
-  }
-
-  let no = await models.goal_set.findOne({
-
-  });
-
-  // let na = await models.paths.findOne({
-  //   where: {
-  //     name : req.session.name,
-  //   },
-  // });
-  
-  res.render('user/exercise', { body, name, path, no });
-});
-
-
-//나의 활동 - 목표 설정하기
-router.get("/goal_set", async function(req,res,next) {
- 
-res.render('user/goal_set')
-})
-
-router.post("/goal_set", async function(req,res,next){
-  let body = req.body;
-
-  let result = models.goal_set.create(
-    {
-      goal: body.goal, 
-  }
-)
-
-
-
-res.render('user/goal_set', {result})
-});
-
-
-// app.post('/mypage', function(req, res){
-//   var responseData = {};
- 
-//   var query =  connection.query('select * from chartA ', function(err,rows){ 
-//     responseData.score = [];
-//     if(err) throw err;
-//     if(rows[0]){
-//       responseData.result = "ok";
-//       rows.forEach(function(val){
-//         responseData.day.push(val.day);
-//       })
-//     }
-//     else{
-//       responseData.result = "none";
-//       responseData.score = "";
-//     }
-//     res.json(responseData);
-//   });
-// });
-
 
 
 module.exports = router;
